@@ -1,4 +1,5 @@
 import React from "react"
+import "./style.css"
 
 class Header extends React.Component {
   constructor(props){
@@ -14,4 +15,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header 
+export default Header
