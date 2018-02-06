@@ -7,18 +7,36 @@ class CreateUser extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      pass: "",
-      confirm: ""
+      unique: true,
+      match: false
     }
+    this.register = this.register.bind(this)
+    this.checkName = this.checkName.bind(this)
+    this.checkPass = this.checkPass.bind(this)
   }
 
-  componentDidMount(){
-    console.log("component did mount")
+  checkName(input){
+    this.setState({unique: true})
+    if (this.props.users.length < 1){
+      console.log("users not here yet")
+      return
+    }
+    this.props.users.forEach(user => {
+      if (user.name === input){
+        this.setState({unique: false})
+      }
+    })
+  }
+
+  checkPass(pass, conf){
+    this.setState({match: false})
+    if (pass === conf){
+      this.setState({match: true})
+    }
   }
 
   register(e){
     e.preventDefault()
-    console.log(e.target)
     var form = new FormData(e.target)
     var sender = {
       firstName: form.get("firstName"),
@@ -29,16 +47,23 @@ class CreateUser extends React.Component {
       password: form.get("password")
     }
 
-    if(){}
-    else if(){}
-
-    fetch(apiUrl, {
-      method: "POST",
-      headers: new Headers({
-        "Content-type": "application/json"
-      }),
-      body: JSON.stringify(sender)
-    })
+    this.checkName(sender.name)
+    this.checkPass(sender.password, form.get("passwordConfirm"))
+    console.log("first click!")
+    setTimeout(()=>{
+    if (this.state.unique && this.state.match){
+      console.log("post time!")
+      fetch(apiUrl, {
+        method: "POST",
+        headers: new Headers({
+          "Content-type": "application/json"
+        }),
+        body: JSON.stringify(sender)
+      })
+      .then(response => console.log(response))
+      .setTimeout(()=>{})
+      .catch(console.error)
+    }}, 200)
   }
 
   render(){
