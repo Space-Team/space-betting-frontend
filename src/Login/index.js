@@ -10,7 +10,7 @@ class Login extends React.Component {
 
   redirect(e){
     e.preventDefault()
-    console.log("create user redirect: ", "working")
+    console.log("create user redirect: ", window.location.href = "/new-user")
   }
 
 
@@ -21,10 +21,10 @@ class Login extends React.Component {
         <form id="login-box" onSubmit={this.props.validate}>
           <h3>Login</h3>
 
-          <label htmlFor="form-user-name">Username: </label>
+          <label htmlFor="login-user-name">Username: </label>
           <input type="text" id="form-user-name" name="userName" />
 
-          <label htmlFor="form-password">Password: </label>
+          <label htmlFor="login-password">Password: </label>
           <input type="password" id="form-password" name="userPass" />
 
           <button type="button" onClick={this.forgot}>Forgot Something?</button>

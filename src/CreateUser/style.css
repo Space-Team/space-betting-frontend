@@ -1,0 +1,9 @@
+#avatarChoice > label > img {
+  max-height: 50px;
+}
+
+#register-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
