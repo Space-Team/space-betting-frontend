@@ -36,7 +36,7 @@ class PostBet extends Component {
     };
     const number = this.state.amount;
     return (
-      <section className="post-bet">
+      <section className={this.props.toggle ? "" : "hidden"}>
         <h2>Post Your Bet!</h2>
         <Form>
           <FormItem
@@ -54,8 +54,8 @@ class PostBet extends Component {
             <TextArea rows={4} />
           </FormItem>
           <FormItem>
-            <Button type="primary" htmlType="submit" >Post Bet</Button>
-            <Button >Cancel</Button>
+            <Button type="primary" htmlType="submit" onClick={this.props.toggler}>Post Bet</Button>
+            <Button onClick={this.props.toggler}>Cancel</Button>
           </FormItem>
         </Form>
       </section>

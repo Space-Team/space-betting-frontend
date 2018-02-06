@@ -3,27 +3,31 @@ import {BrowserRouter as Router, Route, Link } from "react-router-dom"
 import { Button } from "antd"
 import BetCardsList from "../BetCardsList"
 import PostBet from "../PostBet"
+import "./style.css"
 
 class Main extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
+    this.state = {
+      betsToggle: false
+    }
+    this.toggleForm = this.toggleForm.bind(this)
+  }
+
+  toggleForm(e){
+    e.preventDefault()
+    this.setState({betsToggle: !this.state.betsToggle})
   }
 
   render () {
 
     return (
         <div className="MainPage">
-        <Router>
-          <div className="something">
-            <Link to="/post-bets">
-              <Button className="navbtn" > Post a Bet </Button>
-            </Link>
-            <div className="Routes">
-              <Route path="/post-bets" render={()=><PostBet/>} />
-            </div>
+          <div className="place-bets-box">
+            <Button className={this.state.betsToggle ? "navbtn hidden" : "navbtn"} onClick={this.toggleForm}> Post a Bet </Button>
+            <PostBet id="post-bet-box" toggle={this.state.betsToggle} toggler={this.toggleForm}/>
           </div>
-        </Router>
           <h2>Available Bets</h2>
           <div className="cardHeaders">
             <p>Amount</p>
