@@ -19,6 +19,8 @@ class App extends Component {
       creatorBets: []
     }
     this.validate = this.validate.bind(this)
+    this.putAcceptance = this.putAcceptance.bind(this)
+
   }
 
   componentDidMount() {
@@ -70,6 +72,24 @@ class App extends Component {
 
   }
 
+  putAcceptance (submission, id) {
+    console.log(submission, id)
+    var url = apiUrl + "bets/" + id
+    fetch(url, {
+      method: "PUT", // or 'PUT'
+      body: JSON.stringify(submission),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    }).then(res => res.json())
+    // .then(res => {window.location.assign(homeUrl + '/success'); return res})
+    .catch(error => console.error("Error:", error))
+    .then(response => console.log("Success:", response))
+    .then(data => {this.setState({bets: data})
+
+  })
+  }
+
   render() {
     return (
       <Router>
@@ -77,7 +97,7 @@ class App extends Component {
         <Header />
           <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
           <Route path="/new-user" render={()=><CreateUser users={this.state.users}/>}/>
-          <Route path="/main" render={()=><Main creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users}/>} />
+          <Route path="/main" render={()=><Main putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users}/>} />
         <Footer />
       </div>
       </Router>

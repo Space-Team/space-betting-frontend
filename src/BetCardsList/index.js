@@ -11,7 +11,10 @@ const BetCardsList = (props) => {
 
   return props.creatorBets.map(bet => {
     if (bet.accepted === false) {
-      return <BetCard key={bet.id} bet={bet} users={props.users}/>
+      return <BetCard key={bet.id}
+      bet={bet}
+      users={props.users}
+      putAcceptance={props.putAcceptance}/>
     }
   })
 

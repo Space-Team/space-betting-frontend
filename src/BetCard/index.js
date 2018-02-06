@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Button, Modal } from 'antd'
+
 
 let creatorName = ''
 
 class BetCard extends Component {
 
   constructor(props) {
-  super(props)
+    super(props)
 
-  }
+    this.state = {
+      acceptModalIsOpen: false,
+    }
+
+    this.openAcceptModal = this.openAcceptModal.bind(this);
+    this.closeAcceptModal = this.closeAcceptModal.bind(this);
+    }
 
   componentDidMount() {
     console.log("mounted")
@@ -18,8 +26,28 @@ class BetCard extends Component {
       })
   }
 
+  openAcceptModal() {
+    this.setState({acceptModalIsOpen: true});
+  }
 
+  closeAcceptModal() {
+    this.setState({acceptModalIsOpen: false});
+  }
 
+  handleOk = (e) => {
+  console.log(e);
+  e.preventDefault()
+  const bet = this.props.bet
+  const objToSubmit = ({
+    "accepted": true,
+    "acceptor": 2,
+  })
+  console.log('object to submit', objToSubmit)
+  this.props.putAcceptance(objToSubmit, this.props.bet.id)
+  this.setState({
+    acceptModalIsOpen: false,
+  });
+  }
 
   render() {
 
@@ -29,8 +57,19 @@ class BetCard extends Component {
           <p>{this.props.bet.amount}</p>
           <p className="cardname">{this.props.bet.description}</p>
           <p>{this.props.bet.name}</p>
-          <button>Accept</button>
+          <Button onClick={this.openAcceptModal} type='primary'>Accept</Button>
         </main>
+
+        <Modal
+          title="Confirm Bet"
+          onOk={this.handleOk}
+          visible={this.state.acceptModalIsOpen}
+          contentLabel="Accept Modal"
+          onCancel={this.closeAcceptModal}>
+
+          <p>Are you sure you sure you want to bet {this.props.bet.name} {this.props.bet.amount} spacebucks?</p>
+
+        </Modal>
 
       </div>
     );
