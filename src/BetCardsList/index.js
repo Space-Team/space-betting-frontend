@@ -10,7 +10,7 @@ const BetCardsList = (props) => {
   }
 
     return props.bets.map(bet => {
-      return <BetCard key={bet.id} bet={bet}/>
+      return <BetCard key={bet.id} bet={bet} users={props.users}/>
     })
 
 }

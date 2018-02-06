@@ -16,7 +16,7 @@ class Main extends Component {
             <p className="cardname">Description</p>
             <p>Creator</p>
           </div>
-          <BetCardsList bets={this.props.bets}/>
+          <BetCardsList users={this.props.users} bets={this.props.bets}/>
         </div>
     )
   }
