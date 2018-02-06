@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
+import BetCardsList from "../BetCardsList"
 
 class Main extends Component {
 
@@ -8,13 +9,17 @@ class Main extends Component {
 
   render () {
     return (
-        <div className='MainPage'>
+        <div className="MainPage">
           <h2>Available Bets</h2>
-          <div>{}</div>
+          <div className="cardHeaders">
+            <p>Amount</p>
+            <p className="cardname">Description</p>
+            <p>Creator</p>
+          </div>
+          <BetCardsList bets={this.props.bets}/>
         </div>
     )
   }
-
 }
 
 export default Main;
