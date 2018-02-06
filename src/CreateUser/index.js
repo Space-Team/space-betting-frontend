@@ -29,9 +29,6 @@ class CreateUser extends React.Component {
       password: form.get("password")
     }
 
-    if(){}
-    else if(){}
-
     fetch(apiUrl, {
       method: "POST",
       headers: new Headers({
