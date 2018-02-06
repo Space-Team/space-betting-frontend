@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 
+let creatorName = ''
 
 class BetCard extends Component {
 
   constructor(props) {
-  super(props);
+  super(props)
+
   }
 
   componentDidMount() {
-    console.log('this.props.bet', this.props.bet)
+    console.log("mounted")
+    console.log("creatorName")
+    creatorName = this.props.users.filter(item => {
+        return this.props.bet.creator === item.id
+      })
   }
+
+
 
 
   render() {
