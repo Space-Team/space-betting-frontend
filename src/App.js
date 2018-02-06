@@ -15,12 +15,11 @@ class App extends Component {
     this.state = {
       bets: [],
       users: [],
-      userName: "",
       creatorBets: []
     }
     this.validate = this.validate.bind(this)
     this.putAcceptance = this.putAcceptance.bind(this)
-
+    this.submitBet = this.submitBet.bind(this)
   }
 
   componentDidMount() {
@@ -54,8 +53,6 @@ class App extends Component {
 
 
     setTimeout(()=>{this.state.users.forEach(user => {
-      console.log(user)
-      console.log(user.name && form.get("userName"))
       if (user.name !== form.get("userName")){
         document.querySelector("#wrong-creds").className = ""
         return
@@ -64,7 +61,15 @@ class App extends Component {
         return
       }
       this.setState({userName: form.get("userName")})
-      window.location.href = "/main"
+      window.sessionStorage.setItem("user", form.get("userName"))
+      window.sessionStorage.setItem("id", user.id)
+      window.sessionStorage.setItem("spacebucks", user.spacebucks)
+      window.sessionStorage.setItem("avatar", user.image)
+      window.sessionStorage.setItem("firstName", user.firstName)
+      window.sessionStorage.setItem("lastName", user.lastName)
+      window.sessionStorage.setItem("date", user.date)
+      console.log(window.sessionStorage)
+      window.location.href="/main"
     })}, 500)
 
 
@@ -87,6 +92,32 @@ class App extends Component {
   })
   }
 
+  submitBet(e){
+    e.preventDefault()
+    var form = new FormData(e.target)
+    var sender = {
+      description: form.get("bet_description"),
+      amount: form.get("bet_amount"),
+      accepted: false,
+      resolved: false,
+      creator: 1,
+      acceptor: null,
+      winner: null,
+      comment: ""
+    }
+
+    fetch(apiUrl + "bets", {
+      method: "POST",
+      headers: new Headers({
+        "Content-Type": "application/json"
+      }),
+      body: JSON.stringify(sender)
+    })
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(console.error)
+  }
+
   render() {
     return (
       <Router>
@@ -94,7 +125,7 @@ class App extends Component {
         <Header />
           <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
           <Route path="/new-user" render={()=><CreateUser users={this.state.users}/>}/>
-          <Route path="/main" render={()=><Main putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users}/>} />
+          <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users}/>} />
         <Footer />
       </div>
       </Router>

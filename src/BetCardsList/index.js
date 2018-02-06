@@ -6,7 +6,7 @@ const BetCardsList = (props) => {
   if (!props.bets) {
     return <p>No data yet, hold please</p>
   } else if (props.bets) {
-    console.log('props.bets', props.bets)
+    
   }
 
   return props.creatorBets.map(bet => {
