@@ -5,6 +5,7 @@ import Header from "./Header"
 import Main from "./Main"
 import Footer from "./Footer"
 import Login from "./Login"
+import Profile from "./Profile"
 import CreateUser from "./CreateUser"
 
 const apiUrl = 'https://planet-wager.herokuapp.com/'
@@ -125,6 +126,7 @@ class App extends Component {
         <Header />
           <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
           <Route path="/new-user" render={()=><CreateUser users={this.state.users}/>}/>
+          <Route path="/profile" render={()=><Profile />} />
           <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users}/>} />
         <Footer />
       </div>

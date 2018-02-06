@@ -8,19 +8,19 @@ class Header extends React.Component {
     super(props)
   }
 
+  getProfile() {
+    window.location.assign('./Profile')
+  }
+
   render(){
     return(
-      <div id="header-banner">
-        <h1>Planet Wager</h1>
-        <Router>
-          <div>
-            <Link to="/profile">
-              <img src="https://cdn4.iconfinder.com/data/icons/people-of-service/512/People_Services_astronaut_man-256.png"/>
-            </Link>
-            <Route path="/profile" render={()=><Profile />} />
-          </div>
-        </Router>
+      <div id="high">
+        <div id="header-banner">
+          <h1 id="logo">Planet Wager</h1>
+          <img onClick={this.getProfile} src="https://cdn4.iconfinder.com/data/icons/people-of-service/512/People_Services_astronaut_man-256.png"/>
+        </div>
       </div>
+
     )
   }
 }
