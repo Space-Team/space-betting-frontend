@@ -11,7 +11,8 @@ const apiUrl = 'https://glacial-peak-21428.herokuapp.com/'
 class App extends Component {
 
   state = {
-  bets: []
+  bets: [],
+  users: []
   }
 
   componentDidMount() {
@@ -20,9 +21,16 @@ class App extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState({
-          bets: data.bets});
+          bets: data.bets})
         console.log('bets', this.state.bets)
-      });
+      })
+    fetch(apiUrl + 'users')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          users: data.users})
+        console.log('users', this.state.users)
+      })
   }
 
   render() {
