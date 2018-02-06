@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import BetCardsList from "../BetCardsList"
+import PostBet from "../PostBet"
 
 class Main extends Component {
 
@@ -18,6 +19,7 @@ class Main extends Component {
             <p>Creator</p>
           </div>
           <BetCardsList users={this.props.users} bets={this.props.bets} creatorBets={this.props.creatorBets}/>
+          <PostBet />
         </div>
     )
   }
