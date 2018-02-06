@@ -1,0 +1,22 @@
+#header-banner {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  background-color: #1960d1;
+}
+
+#logo {
+  grid-column: 2 / 3;
+  justify-self: center;
+  padding: .5rem;
+  font-size: 1.5rem;
+}
+
+img {
+  height: 2rem;
+  justify-self: end;
+  margin: .5rem .5rem 0 0;
+}
+
+h1 {
+  margin-bottom: 0rem
+}
