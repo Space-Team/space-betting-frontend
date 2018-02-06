@@ -1,6 +1,8 @@
 import React from "react"
 import "./style.css"
 
+const apiUrl = "https://planet-wager.herokuapp.com/users"
+
 class CreateUser extends React.Component {
   constructor(props){
     super(props)
@@ -27,7 +29,16 @@ class CreateUser extends React.Component {
       password: form.get("password")
     }
 
+    if(){}
+    else if(){}
 
+    fetch(apiUrl, {
+      method: "POST",
+      headers: new Headers({
+        "Content-type": "application/json"
+      }),
+      body: JSON.stringify(sender)
+    })
   }
 
   render(){

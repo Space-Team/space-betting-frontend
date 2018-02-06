@@ -76,12 +76,8 @@ class App extends Component {
       <div className="App">
         <Header />
           <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
-<<<<<<< HEAD
-          <Route path="/new-user" render={()=><CreateUser />}/>
-          <Route path="/main" render={()=><Main bets={this.state.bets}/>} />
-=======
+          <Route path="/new-user" render={()=><CreateUser users={this.state.users}/>}/>
           <Route path="/main" render={()=><Main creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users}/>} />
->>>>>>> fa9db53c7ab8c35e84deac4b240111c360abc471
         <Footer />
       </div>
       </Router>
