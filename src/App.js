@@ -57,16 +57,14 @@ class App extends Component {
       console.log(user)
       console.log(user.name && form.get("userName"))
       if (user.name !== form.get("userName")){
-        console.log("no user with that username")
+        document.querySelector("#wrong-creds").className = ""
         return
-        //append message
       } else if (user.password !== form.get("userPass")){
-        console.log("bad password")
+        document.querySelector("#wrong-creds").className = ""
         return
-        //append message
       }
-      console.log("you made it through")
       this.setState({userName: form.get("userName")})
+      window.location.href = "/main"
     })}, 500)
 
 
@@ -82,7 +80,6 @@ class App extends Component {
         "Content-Type": "application/json"
       })
     }).then(res => res.json())
-    // .then(res => {window.location.assign(homeUrl + '/success'); return res})
     .catch(error => console.error("Error:", error))
     .then(response => console.log("Success:", response))
     .then(data => {this.setState({bets: data})
