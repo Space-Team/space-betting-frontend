@@ -6,7 +6,7 @@ import Main from "./Main"
 import Footer from "./Footer"
 import Login from "./Login"
 
-const apiUrl = 'https://glacial-peak-21428.herokuapp.com/'
+const apiUrl = 'https://planet-wager.herokuapp.com/'
 
 class App extends Component {
   constructor(props){
@@ -14,7 +14,8 @@ class App extends Component {
     this.state = {
       bets: [],
       users: [],
-      userName: ""
+      userName: "",
+      creatorBets: []
     }
     this.validate = this.validate.bind(this)
   }
@@ -34,6 +35,13 @@ class App extends Component {
         this.setState({
           users: data.users})
         console.log('users', this.state.users)
+      })
+    fetch(apiUrl + 'creator-bets')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          creatorBets: data.bets})
+        console.log('creatorbets', this.state.creatorBets)
       })
   }
 
@@ -67,7 +75,7 @@ class App extends Component {
       <div className="App">
         <Header />
           <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
-          <Route path="/main" render={()=><Main bets={this.state.bets} users={this.state.users}/>} />
+          <Route path="/main" render={()=><Main creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users}/>} />
         <Footer />
       </div>
       </Router>

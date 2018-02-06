@@ -8,6 +8,7 @@ class Main extends Component {
   }
 
   render () {
+
     return (
         <div className="MainPage">
           <h2>Available Bets</h2>
@@ -16,7 +17,7 @@ class Main extends Component {
             <p className="cardname">Description</p>
             <p>Creator</p>
           </div>
-          <BetCardsList users={this.props.users} bets={this.props.bets}/>
+          <BetCardsList users={this.props.users} bets={this.props.bets} creatorBets={this.props.creatorBets}/>
         </div>
     )
   }
