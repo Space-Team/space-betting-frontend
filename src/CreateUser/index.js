@@ -1,4 +1,5 @@
 import React from "react"
+import ReactDOM from "react-dom"
 import "./style.css"
 
 const apiUrl = "https://planet-wager.herokuapp.com/users"
@@ -24,6 +25,7 @@ class CreateUser extends React.Component {
     this.props.users.forEach(user => {
       if (user.name === input){
         this.setState({unique: false})
+        document.querySelector("#exists-warning").className = ""
       }
     })
   }
@@ -32,6 +34,8 @@ class CreateUser extends React.Component {
     this.setState({match: false})
     if (pass === conf){
       this.setState({match: true})
+    } else if (pass !== conf){
+      document.querySelector("#mismatch-warning").className = ""
     }
   }
 
@@ -49,10 +53,8 @@ class CreateUser extends React.Component {
 
     this.checkName(sender.name)
     this.checkPass(sender.password, form.get("passwordConfirm"))
-    console.log("first click!")
     setTimeout(()=>{
     if (this.state.unique && this.state.match){
-      console.log("post time!")
       fetch(apiUrl, {
         method: "POST",
         headers: new Headers({
@@ -60,8 +62,7 @@ class CreateUser extends React.Component {
         }),
         body: JSON.stringify(sender)
       })
-      .then(response => console.log(response))
-      .setTimeout(()=>{})
+      .then(response => setTimeout(()=>{window.location.href = "/"}, 500))
       .catch(console.error)
     }}, 200)
   }
@@ -80,6 +81,7 @@ class CreateUser extends React.Component {
 
           <label htmlFor="register-user-name">Choose a Username: </label>
           <input type="text" id="register-user-name" name="userName" />
+          <p id="exists-warning" className="hidden">Username already exists...</p>
 
           <label htmlFor="avatarChoice">Select an avatar: </label>
           <div id="avatarChoice">
@@ -109,6 +111,7 @@ class CreateUser extends React.Component {
 
           <label htmlFor="form-password-confirm">Confirm Password: </label>
           <input type="password" id="form-password-confirm" name="passwordConfirm" />
+          <p id="mismatch-warning" className="hidden">Your passwords do not match...</p>
 
           <button id="login-submitter" type="submit" >Register!</button>
         </form>

@@ -7,3 +7,8 @@
   flex-direction: column;
   align-items: center;
 }
+
+.hidden {
+  display: none;
+  color: red;
+}

@@ -1,4 +1,5 @@
 import React from "react"
+import "./style.css"
 
 const apiUrl = "https://glacial-peak-21428.herokuapp.com/"
 
