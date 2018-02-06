@@ -9,9 +9,11 @@ const BetCardsList = (props) => {
     console.log('props.bets', props.bets)
   }
 
-    return props.bets.map(bet => {
-      return <BetCard key={bet.id} bet={bet}/>
-    })
+  return props.creatorBets.map(bet => {
+    if (bet.accepted === false) {
+      return <BetCard key={bet.id} bet={bet} users={props.users}/>
+    }
+  })
 
 }
 
