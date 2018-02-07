@@ -1,14 +1,10 @@
-/* .post-form {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
+.post-form {
+  text-align: center;
 }
 
-Form {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-} */
+h2 {
+  font-size: 1.5rem;
+}
 
 .input-number {
   display: flex;

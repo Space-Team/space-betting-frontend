@@ -37,9 +37,10 @@ class PostBet extends Component {
     const number = this.state.amount
     return (
       <section className={this.props.toggle ? "post-form" : "hidden"}>
-        <h2>Post Your Bet!</h2>
+        <h2>Create Your Bet!</h2>
         <Form onSubmit={this.props.submitBet}>
-          <FormItem {...formItemLayout} label="Amount of SpaceBucks wagered">
+        <p>How many spacebucks do you want to bet?</p>
+          <FormItem {...formItemLayout} >
             <InputNumber
               min={1}
               max={100}
@@ -48,12 +49,13 @@ class PostBet extends Component {
               onChange={this.handleNumberChange}
             />
           </FormItem>
+          <p>Describe the bet you would like to make:</p>
           <FormItem>
             <TextArea rows={4} name="bet_description" />
           </FormItem>
           <FormItem>
             <Button type="primary" htmlType="submit">
-              Post Bet
+              Create Bet
             </Button>
             <Button onClick={this.props.toggler}>Cancel</Button>
           </FormItem>
