@@ -27,7 +27,11 @@ class BetCard extends Component {
   }
 
   openAcceptModal() {
-    this.setState({acceptModalIsOpen: true});
+    if(window.sessionStorage.length === 0){
+      window.location.href = "/login"
+    } else {
+      this.setState({acceptModalIsOpen: true})
+    }
   }
 
   closeAcceptModal() {
@@ -40,14 +44,14 @@ class BetCard extends Component {
   const bet = this.props.bet
   const objToSubmit = ({
     "accepted": true,
-    "acceptor": 2,
+    "acceptor": Number(window.sessionStorage.id)
   })
   console.log('object to submit', objToSubmit)
   this.props.putAcceptance(objToSubmit, this.props.bet.id)
   this.setState({
     acceptModalIsOpen: false,
   });
-  }
+}
 
   render() {
 
