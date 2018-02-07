@@ -17,7 +17,6 @@ class CurrBetCard extends Component {
 		return this.props.currentBets.map(bet => {
 			return this.props.users.map(user => {
 				if (bet.acceptor === user.id) {
-					console.log("matched acceptor", user.name);
 					acceptor = user.name;
 				}
 

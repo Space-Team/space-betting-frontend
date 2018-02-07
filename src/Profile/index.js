@@ -25,7 +25,17 @@ class Profile extends Component {
     }
   }
 
-
+  getSpacebucks(){
+    var sbs = 0
+    this.props.users.forEach(user => {
+      if (window.sessionStorage.id == user.id){
+        console.log("WE GOT A MATCH");
+        sbs = user.spacebucks
+      }
+    })
+    console.log("sbs: ", sbs)
+    return sbs
+  }
 
   render() {
     let currentBets = this.props.bets.filter(bet => {
@@ -38,9 +48,9 @@ class Profile extends Component {
         <h1>{window.sessionStorage.user}</h1>
         <p>Spacebucks:</p>
         <div id='spacebucksdiv'>
-          <h2>{window.sessionStorage.spacebucks}</h2>
+          <h2>{this.getSpacebucks()}</h2>
         </div>
-        <CurrBetCard currentBets={this.state.currentBets} users={this.props.users} bets={this.state.bets}/>
+        <CurrBetCard currentBets={this.state.currentBets} users={this.props.users} bets={this.state.bets} currentUser={this.props.currentUser}/>
       </div>
     );
   }

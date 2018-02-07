@@ -12,7 +12,8 @@ const BetCardsList = (props) => {
         bet={bet}
         users={props.users}
         putAcceptance={props.putAcceptance}
-        getBets={props.getBets}/>
+        getBets={props.getBets}
+        currentUser={props.currentUser}/>
       }
     })
   }
