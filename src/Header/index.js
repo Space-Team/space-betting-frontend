@@ -13,19 +13,14 @@ class Header extends React.Component {
   getImg(id){
     switch (id) {
       case "1":
-        console.log("id 1")
         return "https://cdn4.iconfinder.com/data/icons/people-of-service/512/People_Services_astronaut_man-256.png"
       case "2":
-        console.log("id 2")
         return "https://cdn4.iconfinder.com/data/icons/people-of-service/512/People_Services_astronaut_woman-256.png"
       case "3":
-        console.log("id 3")
         return "https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Alien-256.png"
       case "4":
-        console.log("id 4")
         return "https://cdn0.iconfinder.com/data/icons/everything-icons-vol-1/512/Earth-terra_nova-planet-space-world-globe-space-01-256.png"
       default:
-        console.log("id undefined")
         return "http://www.janetallinger.com/images/icons/big/coin.png"
         break
     }
