@@ -103,19 +103,10 @@ class BetCard extends Component {
     return (
       <div className="betcard">
         <main className="maincard">
-<<<<<<< HEAD
-          <p>{this.props.bet.amount}</p>
-          <p className="cardname">{this.props.bet.description}</p>
-          <p>{this.props.bet.name}</p>
-          <Button onClick={this.openAcceptModal} type="primary">
-            Accept
-          </Button>
-=======
           <p className="gridcol1">{this.props.bet.amount}</p>
           <p className="gridcol2 cardname">{this.props.bet.description}</p>
           <p className="gridcol3">{this.props.bet.name}</p>
           <Button className="gridcol4" onClick={this.openAcceptModal} type='primary'>Accept</Button>
->>>>>>> styles
         </main>
 
         <Modal
