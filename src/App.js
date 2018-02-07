@@ -17,7 +17,8 @@ class App extends Component {
       bets: [],
       users: [],
       creatorBets: [],
-      acceptorBets: []
+      acceptorBets: [],
+      currentUser: {}
     }
     this.validate = this.validate.bind(this)
     this.putAcceptance = this.putAcceptance.bind(this)
@@ -26,6 +27,7 @@ class App extends Component {
     this.getUsers = this.getUsers.bind(this)
     this.getBetsByCreator = this.getBetsByCreator.bind(this)
     this.getBetsByAcceptor = this.getBetsByAcceptor.bind(this)
+    this.getCurrentUser = this.getCurrentUser.bind(this)
   }
 
   componentDidMount() {
@@ -33,6 +35,8 @@ class App extends Component {
     this.getUsers()
     this.getBetsByCreator()
     this.getBetsByAcceptor()
+    setTimeout(()=> {this.getCurrentUser()}, 500)
+    console.log('cuser', this.state.currentUser)
   }
 
   getBets() {
@@ -153,42 +157,27 @@ class App extends Component {
       .catch(console.error)
   }
 
+  getCurrentUser () {
+    console.log('getting user')
+    this.state.users.map(user => {
+      console.log('user', user)
+      if (window.sessionStorage.id == user.id) {
+        this.setState({currentUser: user})
+      }
+    })
+  }
+
   render() {
     return (
       <Router>
-        <div className="App">
-          <Header />
-          <Route
-            path="/login"
-            render={() => (
-              <Login users={this.state.users} validate={this.validate} />
-            )}
-          />
-          <Route
-            path="/new-user"
-            render={() => <CreateUser users={this.state.users} />}
-          />
-          <Route
-            path="/profile"
-            render={() => (
-              <Profile users={this.state.users} bets={this.state.bets} />
-            )}
-          />
-          <Route
-            path="/main"
-            render={() => (
-              <Main
-                submitBet={this.submitBet}
-                putAcceptance={this.putAcceptance}
-                creatorBets={this.state.creatorBets}
-                bets={this.state.bets}
-                users={this.state.users}
-                getBets={this.getBets}
-              />
-            )}
-          />
-          <Footer />
-        </div>
+      <div className="App">
+        <Header />
+          <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
+          <Route path="/new-user" render={()=><CreateUser users={this.state.users}/>}/>
+          <Route path="/profile" render={()=><Profile currentUser={this.state.currentUser} users={this.state.users} bets={this.state.bets}/>} />
+          <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users} getBets={this.getBets} currentUser={this.state.currentUser}/>} />
+        <Footer />
+      </div>
       </Router>
     )
   }
