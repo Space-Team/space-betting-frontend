@@ -11,17 +11,27 @@ class Profile extends Component {
     super(props)
 
     this.state = {
+      bets: this.props.bets,
+      currentBets: null
     }
   }
 
   componentDidMount() {
     console.log("profile mounted")
-    console.log('currentUser', this.currentUser)
     console.log('profileprops', this.props)
+    if(!this.props.bets) {
+      console.error('super sorry')
+      return null
+    }
   }
 
-  render() {
 
+
+  render() {
+    let currentBets = this.props.bets.filter(bet => {
+        return window.sessionStorage.id == bet.creator})
+    this.state.currentBets = currentBets
+    console.log('cb', this.state.currentBets)
 
     return (
       <div>
@@ -30,7 +40,7 @@ class Profile extends Component {
         <div id='spacebucksdiv'>
           <h2>{window.sessionStorage.spacebucks}</h2>
         </div>
-        <CurrBetCard bets={this.props.bets}/>
+        <CurrBetCard currentBets={this.state.currentBets} users={this.props.users} bets={this.state.bets}/>
       </div>
     );
   }

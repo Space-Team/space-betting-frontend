@@ -1,23 +1,41 @@
-import React from 'react'
+import React, { Component } from 'react'
+import "./style.css"
+import { Button } from 'antd'
 
 
 
-const CurrBetCard = props => {
+class CurrBetCard extends Component {
 
-  let currentBets = props.bets.filter(bet => {
-      return window.sessionStorage.id == bet.creator})
-    console.log('cb', currentBets)
+  constructor(props){
+    super(props)
+  }
 
-  console.log('eprops', props)
-  // return this.currentBets.map(bet => {
+
+  componentDidMount() {
+    console.log('eprops', this.props)
+  }
+
+
+
+  render () {
+
+  return this.props.currentBets.map(bet => {
+    let creatorName = this.props.users.filter(item => {
+        return bet.creator === item.id
+      })
     return (
-      <div key={1}>
-        <p>hi</p>
+      <div className='currbets' key={bet.id}>
+        <p>Created by: {bet.creator}</p>
+        <p>Description: {bet.description}</p>
+        <p>Accepted by: {bet.acceptor}</p>
+        <Button>Creator Won</Button>
+        <Button>Acceptor Won</Button>
+        <Button>Wash</Button>
       </div>
     )
+  })
 
-
-
+  }
 }
 
 export default CurrBetCard;
