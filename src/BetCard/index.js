@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
-import { Button, Modal } from 'antd'
+import React, { Component } from "react"
+import { Button, Modal } from "antd"
 import "./style.css"
-
 
 const apiUrl = "https://planet-wager.herokuapp.com/"
 
@@ -58,11 +57,11 @@ class BetCard extends Component {
       .catch(error => console.error("Error:", error))
   }
 
-  takeTheirBucks(name, amount){
+  takeTheirBucks(name, amount) {
     var creatorId
     var userBucks
     this.props.users.forEach(user => {
-      if (user.name === name){
+      if (user.name === name) {
         creatorId = user.id
         userBucks = user.spacebucks
       }
@@ -103,19 +102,16 @@ class BetCard extends Component {
     return (
       <div className="betcard">
         <main className="maincard">
-<<<<<<< HEAD
-          <p>{this.props.bet.amount}</p>
-          <p className="cardname">{this.props.bet.description}</p>
-          <p>{this.props.bet.name}</p>
-          <Button onClick={this.openAcceptModal} type="primary">
-            Accept
-          </Button>
-=======
           <p className="gridcol1">{this.props.bet.amount}</p>
           <p className="gridcol2 cardname">{this.props.bet.description}</p>
           <p className="gridcol3">{this.props.bet.name}</p>
-          <Button className="gridcol4" onClick={this.openAcceptModal} type='primary'>Accept</Button>
->>>>>>> styles
+          <Button
+            className="gridcol4"
+            onClick={this.openAcceptModal}
+            type="primary"
+          >
+            Accept
+          </Button>
         </main>
 
         <Modal
