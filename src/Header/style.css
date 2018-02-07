@@ -1,4 +1,4 @@
-#header-banner {
+#high {
   display: grid;
   grid-template-columns: 33% 33% 33%;
   background-color: #1960d1;
@@ -19,4 +19,97 @@ img {
 
 h1 {
   margin-bottom: 0rem
+}
+
+.add-menu:hover .add-content {
+  display: block;
+  width: 40px;
+  color: #ffffea;
+  background-color: #ffffea;
+  font-size: 40px;
+  align-self: center;
+  line-height: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #40403a;
+}
+
+#add-story {
+  text-decoration: none;
+  color: #40403a;
+  background-color: #ffffea;
+  font-size: 40px;
+  align-self: center;
+  border: 1px solid #ffffea;
+  line-height: 10px;
+  padding-bottom: 6px;
+}
+
+.add-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.add-content {
+  display: none;
+  position: absolute;
+  right: -50px;
+  margin-right: 50px;
+  background-color: #ffffea;
+  min-width: 140px;
+}
+
+.add-content a {
+  color: #40403a;
+  padding: 12px 16px;
+  font-family: "Playfair Display", serif;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  width: 40px;
+  color: #ffffea;
+  background-color: #ffffea;
+  font-size: 40px;
+  align-self: center;
+  line-height: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #40403a;
+}
+
+#menu {
+  height: 40px;
+  width: 40px;
+  color: #40403a;
+  background-color: #ffffea;
+  font-size: 30px;
+  align-self: center;
+  border: 1px solid #ffffea;
+  line-height: 10px;
+  transform: rotate(90deg);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffea;
+  min-width: 140px;
+}
+
+.dropdown-content a {
+  color: #40403a;
+  padding: 12px 16px;
+  font-family: "Playfair Display", serif;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  line-height: 20px;
 }
