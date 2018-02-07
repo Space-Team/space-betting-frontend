@@ -1,0 +1,17 @@
+/* .post-form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+Form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+} */
+
+.input-number {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}

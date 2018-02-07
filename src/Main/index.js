@@ -28,7 +28,7 @@ class Main extends Component {
     return (
         <div className="MainPage">
           <div className="place-bets-box">
-            <Button className={this.state.betsToggle ? "navbtn hidden" : "navbtn"} onClick={this.toggleForm}> Post a Bet </Button>
+            <Button id="post-button" className={this.state.betsToggle ? "navbtn hidden" : "navbtn"} onClick={this.toggleForm} size="large"> Create A Bet </Button>
             <PostBet id="post-bet-box" submitBet={this.props.submitBet} toggle={this.state.betsToggle} toggler={this.toggleForm}/>
           </div>
           <h2>Available Bets</h2>

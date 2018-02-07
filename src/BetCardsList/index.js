@@ -1,22 +1,41 @@
 import React, { Component } from 'react'
 import BetCard from '../BetCard'
 
-const BetCardsList = (props) => {
+class BetCardsList extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-  if (!props.bets) {
-    return <p>No data yet, hold please</p>
-  } else if (props.bets) {
-    return props.creatorBets.map(bet => {
-      if (bet.accepted === false) {
-        return <BetCard key={bet.id}
-        bet={bet}
-        users={props.users}
-        putAcceptance={props.putAcceptance}
-        getBets={props.getBets}/>
-      }
-    })
+  componentDidMount(){
+    this.forceUpdate()
+  }
+  render() {
+    let cardRender = null;
+
+    if (!this.props.bets) {
+      cardRender = <p>No data yet, hold please</p>
+    } else if (this.props.bets) {
+      console.log("props of BetCardsList", this.props.creatorBets)
+      cardRender = this.props.creatorBets.map(bet => {
+        if (bet.accepted === false) {
+          return <BetCard key={bet.id}
+          bet={bet}
+          users={this.props.users}
+          putAcceptance={this.props.putAcceptance}
+          getBets={this.props.getBets}/>
+        }
+      })
+    }
+    console.log("cardRender", cardRender)
+    return(
+      <div>
+        { cardRender }
+      </div>
+    )
   }
 }
+
+
 
 
 export default BetCardsList;

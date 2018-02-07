@@ -24,6 +24,7 @@ class BetCard extends Component {
     creatorName = this.props.users.filter(item => {
         return this.props.bet.creator === item.id
       })
+    this.forceUpdate()
   }
 
   openAcceptModal() {

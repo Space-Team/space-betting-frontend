@@ -55,7 +55,7 @@ class App extends Component {
       })
   }
 
-  getBetsByCreator(){
+  getBetsByCreator() {
     fetch(apiUrl + "creator-bets")
       .then(response => response.json())
       .then(data => {
@@ -65,7 +65,7 @@ class App extends Component {
       })
   }
 
-  getBetsByAcceptor(){
+  getBetsByAcceptor() {
     fetch(apiUrl + "acceptor-bets")
       .then(response => response.json())
       .then(data => {
@@ -115,6 +115,8 @@ class App extends Component {
       .then(res => res.json())
       .then(data => {
         this.getBets()
+        this.getBetsByCreator()
+        this.getBetsByAcceptor()
         return data
       })
       .catch(error => console.error("Error:", error))
@@ -133,7 +135,6 @@ class App extends Component {
       winner: null,
       comment: ""
     }
-
     fetch(apiUrl + "bets", {
       method: "POST",
       headers: new Headers({
@@ -142,21 +143,52 @@ class App extends Component {
       body: JSON.stringify(sender)
     })
       .then(response => response.json())
-      .then(response => console.log(response))
+      .then(response => {
+        console.log(response)
+        this.getBets()
+        this.getBetsByCreator()
+        this.getBetsByAcceptor()
+        return response
+      })
       .catch(console.error)
   }
 
   render() {
     return (
       <Router>
-      <div className="App">
-        <Header />
-          <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
-          <Route path="/new-user" render={()=><CreateUser users={this.state.users}/>}/>
-          <Route path="/profile" render={()=><Profile users={this.state.users} bets={this.state.bets}/>} />
-          <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users} getBets={this.getBets}/>} />
-        <Footer />
-      </div>
+        <div className="App">
+          <Header />
+          <Route
+            path="/login"
+            render={() => (
+              <Login users={this.state.users} validate={this.validate} />
+            )}
+          />
+          <Route
+            path="/new-user"
+            render={() => <CreateUser users={this.state.users} />}
+          />
+          <Route
+            path="/profile"
+            render={() => (
+              <Profile users={this.state.users} bets={this.state.bets} />
+            )}
+          />
+          <Route
+            path="/main"
+            render={() => (
+              <Main
+                submitBet={this.submitBet}
+                putAcceptance={this.putAcceptance}
+                creatorBets={this.state.creatorBets}
+                bets={this.state.bets}
+                users={this.state.users}
+                getBets={this.getBets}
+              />
+            )}
+          />
+          <Footer />
+        </div>
       </Router>
     )
   }
