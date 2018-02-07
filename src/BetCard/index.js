@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Modal } from 'antd'
 
+const apiUrl = "https://planet-wager.herokuapp.com/"
 
 let creatorName = ''
 
@@ -24,6 +25,7 @@ class BetCard extends Component {
     creatorName = this.props.users.filter(item => {
         return this.props.bet.creator === item.id
       })
+    this.forceUpdate()
   }
 
   openAcceptModal() {
@@ -38,6 +40,24 @@ class BetCard extends Component {
     this.setState({acceptModalIsOpen: false});
   }
 
+  takeMyBucks(id, amount){
+    const calcedsb = this.props.currentUser.spacebucks - amount
+    const sb2Submit = ({"spacebucks": calcedsb})
+    console.log('sb', sb2Submit)
+    fetch(apiUrl + "users/" + id, {
+      method: "PUT",
+      body: JSON.stringify(sb2Submit),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      return data
+    })
+    .catch(error => console.error("Error:", error))
+  }
+
   handleOk = (e) => {
   console.log(e);
   e.preventDefault()
@@ -48,6 +68,7 @@ class BetCard extends Component {
   })
   console.log('object to submit', objToSubmit)
   this.props.putAcceptance(objToSubmit, this.props.bet.id)
+  this.takeMyBucks(window.sessionStorage.id, bet.amount)
   this.setState({
     acceptModalIsOpen: false,
   });
