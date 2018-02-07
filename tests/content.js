@@ -11,7 +11,7 @@ describe('Page Content', () => {
     cy.get('#profile-dropdown a').eq(0).should('have.text', 'Login');
     cy.get('#profile-dropdown a').eq(1).should('have.text', 'Profile');
     cy.get('#profile-dropdown a').eq(2).should('have.text', 'Logout');
-    cy.get('.navbtn').should('contain', 'Post a Bet');
+    cy.get('#post-button').should('contain', 'Create A Bet');
     cy.get('small').should('contain', 'SpaceTeam Industries');
     cy.get('h2').should('contain', 'Available Bets');
     cy.get('.cardHeaders p').should('have.length', 3);
@@ -20,13 +20,17 @@ describe('Page Content', () => {
     cy.get('.cardHeaders p').eq(2).should('have.text', 'Creator');
     cy.get('.maincard').eq(0).find('p').should('have.length', 3);
     cy.get('.maincard').eq(0).find('button').should('have.text', 'Accept');
+
     // click to...
     // Click to PROFILE section to check that it is not populated?
 
-
     // LOGIN
-    // correct URL
-    // login accepted
+    cy.get('#profile-dropdown').invoke('show');
+    cy.get('#profile-dropdown a').eq(0).click();
+    cy.url().should('equal', 'http://localhost:3000/Login');
+    cy.get('#form-user-name').type('adventurous-amber');
+    cy.get('#form-password').type('adventurous');
+    cy.get('#login-submitter').click();
     // #profile-button img src changes after login
     // navigates back to...
     
