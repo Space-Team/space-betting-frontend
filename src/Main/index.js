@@ -16,7 +16,11 @@ class Main extends Component {
 
   toggleForm(e){
     e.preventDefault()
-    this.setState({betsToggle: !this.state.betsToggle})
+    if(window.sessionStorage.length === 0){
+      window.location.href = "/login"
+    } else {
+      this.setState({betsToggle: !this.state.betsToggle})
+    }
   }
 
   render () {
