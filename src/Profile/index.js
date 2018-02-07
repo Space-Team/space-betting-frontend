@@ -29,7 +29,7 @@ class Profile extends Component {
 
   render() {
     let currentBets = this.props.bets.filter(bet => {
-        return window.sessionStorage.id == bet.creator})
+        return window.sessionStorage.id == bet.creator || window.sessionStorage.id == bet.acceptor})
     this.state.currentBets = currentBets
     console.log('cb', this.state.currentBets)
 

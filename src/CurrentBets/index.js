@@ -1,41 +1,41 @@
-import React, { Component } from 'react'
-import "./style.css"
-import { Button } from 'antd'
-
-
+import React, { Component } from "react";
+import "./style.css";
+import { Button } from "antd";
 
 class CurrBetCard extends Component {
+	constructor(props) {
+		super(props);
+	}
 
-  constructor(props){
-    super(props)
-  }
+	componentDidMount() {
+		console.log("eprops", this.props);
+	}
 
+	render() {
+		var acceptor = "";
 
-  componentDidMount() {
-    console.log('eprops', this.props)
-  }
+		return this.props.currentBets.map(bet => {
+			return this.props.users.map(user => {
+				if (bet.acceptor === user.id) {
+					console.log("matched acceptor", user.name);
+					acceptor = user.name;
+				}
 
-
-
-  render () {
-
-  return this.props.currentBets.map(bet => {
-    let creatorName = this.props.users.filter(item => {
-        return bet.creator === item.id
-      })
-    return (
-      <div className='currbets' key={bet.id}>
-        <p>Created by: {bet.creator}</p>
-        <p>Description: {bet.description}</p>
-        <p>Accepted by: {bet.acceptor}</p>
-        <Button>Creator Won</Button>
-        <Button>Acceptor Won</Button>
-        <Button>Wash</Button>
-      </div>
-    )
-  })
-
-  }
+				if (bet.creator === user.id) {
+					return (
+						<div className="currbets" key={bet.id}>
+							<p>Created by: {user.name}</p>
+							<p>Description: {bet.description}</p>
+							<p>Accepted by: {acceptor}</p>
+							<Button>Creator Won</Button>
+							<Button>Acceptor Won</Button>
+							<Button>Wash</Button>
+						</div>
+					);
+				}
+			});
+		});
+	}
 }
 
 export default CurrBetCard;
