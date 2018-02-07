@@ -38,7 +38,7 @@ class PostBet extends Component {
     return (
       <section className={this.props.toggle ? "" : "hidden"}>
         <h2>Post Your Bet!</h2>
-        <Form>
+        <Form onSubmit={this.props.submitBet}>
           <FormItem
             {...formItemLayout}
             label="Amount of SpaceBucks wagered:"
@@ -46,12 +46,13 @@ class PostBet extends Component {
             <InputNumber
               min={1}
               max={100}
+              name="bet_amount"
               value={number}
               onChange={this.handleNumberChange}
             />
           </FormItem>
           <FormItem>
-            <TextArea rows={4} />
+            <TextArea rows={4} name="bet_description"/>
           </FormItem>
           <FormItem>
             <Button type="primary" htmlType="submit" >Post Bet</Button>
