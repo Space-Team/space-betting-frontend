@@ -29,11 +29,9 @@ class Profile extends Component {
     var sbs = 0
     this.props.users.forEach(user => {
       if (window.sessionStorage.id == user.id){
-        console.log("WE GOT A MATCH");
         sbs = user.spacebucks
       }
     })
-    console.log("sbs: ", sbs)
     return sbs
   }
 
@@ -41,7 +39,6 @@ class Profile extends Component {
     let currentBets = this.props.bets.filter(bet => {
         return window.sessionStorage.id == bet.creator || window.sessionStorage.id == bet.acceptor})
     this.state.currentBets = currentBets
-    console.log('cb', this.state.currentBets)
 
     return (
       <div>

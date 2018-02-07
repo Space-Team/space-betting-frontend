@@ -36,7 +36,6 @@ class App extends Component {
     this.getBetsByCreator()
     this.getBetsByAcceptor()
     setTimeout(()=> {this.getCurrentUser()}, 500)
-    console.log('cuser', this.state.currentUser)
   }
 
   getBets() {
@@ -100,14 +99,12 @@ class App extends Component {
         window.sessionStorage.setItem("firstName", user.firstName)
         window.sessionStorage.setItem("lastName", user.lastName)
         window.sessionStorage.setItem("date", user.date)
-        console.log(window.sessionStorage)
         window.location.href = "/main"
       })
     }, 500)
   }
 
   putAcceptance(submission, id) {
-    console.log(submission, id)
     var url = apiUrl + "bets/" + id
     fetch(url, {
       method: "PUT", // or 'PUT'
@@ -148,7 +145,6 @@ class App extends Component {
     })
       .then(response => response.json())
       .then(response => {
-        console.log(response)
         this.getBets()
         this.getBetsByCreator()
         this.getBetsByAcceptor()
@@ -158,9 +154,7 @@ class App extends Component {
   }
 
   getCurrentUser () {
-    console.log('getting user')
     this.state.users.map(user => {
-      console.log('user', user)
       if (window.sessionStorage.id == user.id) {
         this.setState({currentUser: user})
       }

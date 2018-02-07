@@ -19,7 +19,6 @@ class CreateUser extends React.Component {
   checkName(input){
     this.setState({unique: true})
     if (this.props.users.length < 1){
-      console.log("users not here yet")
       return
     }
     this.props.users.forEach(user => {

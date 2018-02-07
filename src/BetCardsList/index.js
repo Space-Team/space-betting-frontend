@@ -15,7 +15,6 @@ class BetCardsList extends React.Component {
     if (!this.props.bets) {
       cardRender = <p>No data yet, hold please</p>
     } else if (this.props.bets) {
-      console.log("props of BetCardsList", this.props.creatorBets)
       cardRender = this.props.creatorBets.map(bet => {
         if (bet.accepted === false) {
           return <BetCard key={bet.id}
@@ -27,7 +26,6 @@ class BetCardsList extends React.Component {
         }
       })
     }
-    console.log("cardRender", cardRender)
     return(
       <div>
         { cardRender }

@@ -32,7 +32,6 @@ class Header extends React.Component {
   }
 
   logout(){
-    console.log("clicked")
     window.sessionStorage.clear()
   }
 

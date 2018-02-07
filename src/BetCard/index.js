@@ -19,9 +19,6 @@ class BetCard extends Component {
   }
 
   componentDidMount() {
-    console.log("mounted")
-    console.log("creatorName")
-    console.log("props1", this.props)
     creatorName = this.props.users.filter(item => {
       return this.props.bet.creator === item.id
     })

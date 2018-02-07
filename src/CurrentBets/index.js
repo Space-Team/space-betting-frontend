@@ -7,10 +7,6 @@ class CurrBetCard extends Component {
 		super(props);
 	}
 
-	componentDidMount() {
-		console.log("eprops", this.props);
-	}
-
 	render() {
 		var acceptor = "";
 
