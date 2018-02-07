@@ -33,14 +33,14 @@ class Main extends Component {
           </div>
           <h2>Available Bets</h2>
           <div className="cardHeaders">
-            <p>Amount</p>
-            <p className="cardname">Description</p>
-            <p>Creator</p>
+            <p className="gridcol1">$$$</p>
+            <p className="gridcol2 cardname">Description</p>
+            <p className="gridcol3">Creator</p>
           </div>
           <BetCardsList currentUser={this.props.currentUser}
             users={this.props.users}
             bets={this.props.bets}
-            putAcceptance={this.props.putAcceptance} 
+            putAcceptance={this.props.putAcceptance}
             creatorBets={this.props.creatorBets}
             getBets={this.props.getBets}/>
         </div>
