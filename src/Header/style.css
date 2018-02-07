@@ -1,22 +1,57 @@
-#header-banner {
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  background-color: #1960d1;
-}
-
-#logo {
-  grid-column: 2 / 3;
-  justify-self: center;
-  padding: .5rem;
-  font-size: 1.5rem;
-}
-
-img {
+#profile-menu img {
+  margin: 1px 0;
   height: 2rem;
-  justify-self: end;
-  margin: .5rem .5rem 0 0;
 }
 
 h1 {
   margin-bottom: 0rem
+}
+
+#high {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background-color: #1960d1;
+}
+
+#logo-banner {
+  grid-column: 1 / 2;
+  text-align: center;
+  font-style: italic;
+  align-self: center;
+  padding: .5rem;
+  font-size: 1.5rem;
+}
+
+
+#profile-menu:hover #profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 80px;
+  color: white;
+  background-color: #1960d1;
+  font-size: 20px;
+  align-self: center
+}
+
+#profile-button {
+}
+
+#profile-menu {
+  align-self: center;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 25px;
+}
+
+
+#profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 45px;
+}
+
+#profile-dropdown a {
+  color: #ffffea
 }
