@@ -8,75 +8,101 @@ import Login from "./Login"
 import Profile from "./Profile"
 import CreateUser from "./CreateUser"
 
-const apiUrl = 'https://planet-wager.herokuapp.com/'
+const apiUrl = "https://planet-wager.herokuapp.com/"
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       bets: [],
       users: [],
-      creatorBets: []
+      creatorBets: [],
+      acceptorBets: []
     }
     this.validate = this.validate.bind(this)
     this.putAcceptance = this.putAcceptance.bind(this)
     this.submitBet = this.submitBet.bind(this)
+    this.getBets = this.getBets.bind(this)
+    this.getUsers = this.getUsers.bind(this)
+    this.getBetsByCreator = this.getBetsByCreator.bind(this)
+    this.getBetsByAcceptor = this.getBetsByAcceptor.bind(this)
   }
 
   componentDidMount() {
-    console.log('mounting')
-    fetch(apiUrl + 'bets')
+    this.getBets()
+    this.getUsers()
+    this.getBetsByCreator()
+    this.getBetsByAcceptor()
+  }
+
+  getBets() {
+    fetch(apiUrl + "bets")
       .then(response => response.json())
       .then(data => {
         this.setState({
-          bets: data.bets})
-        console.log('bets', this.state.bets)
-      })
-    fetch(apiUrl + 'users')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          users: data.users})
-        console.log('users', this.state.users)
-      })
-    fetch(apiUrl + 'creator-bets')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          creatorBets: data.bets})
-        console.log('creatorbets', this.state.creatorBets)
+          bets: data.bets
+        })
       })
   }
 
-  validate(e){
+  getUsers() {
+    fetch(apiUrl + "users")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          users: data.users
+        })
+      })
+  }
+
+  getBetsByCreator(){
+    fetch(apiUrl + "creator-bets")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          creatorBets: data.bets
+        })
+      })
+  }
+
+  getBetsByAcceptor(){
+    fetch(apiUrl + "acceptor-bets")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          acceptorBets: data.bets
+        })
+      })
+  }
+
+  validate(e) {
     e.preventDefault()
     var form = new FormData(e.target)
 
-
-    setTimeout(()=>{this.state.users.forEach(user => {
-      if (user.name !== form.get("userName")){
-        document.querySelector("#wrong-creds").className = ""
-        return
-      } else if (user.password !== form.get("userPass")){
-        document.querySelector("#wrong-creds").className = ""
-        return
-      }
-      this.setState({userName: form.get("userName")})
-      window.sessionStorage.setItem("user", form.get("userName"))
-      window.sessionStorage.setItem("id", user.id)
-      window.sessionStorage.setItem("spacebucks", user.spacebucks)
-      window.sessionStorage.setItem("avatar", user.image)
-      window.sessionStorage.setItem("firstName", user.firstName)
-      window.sessionStorage.setItem("lastName", user.lastName)
-      window.sessionStorage.setItem("date", user.date)
-      console.log(window.sessionStorage)
-      window.location.href="/main"
-    })}, 500)
-
-
+    setTimeout(() => {
+      this.state.users.forEach(user => {
+        if (user.name !== form.get("userName")) {
+          document.querySelector("#wrong-creds").className = ""
+          return
+        } else if (user.password !== form.get("userPass")) {
+          document.querySelector("#wrong-creds").className = ""
+          return
+        }
+        this.setState({ userName: form.get("userName") })
+        window.sessionStorage.setItem("user", form.get("userName"))
+        window.sessionStorage.setItem("id", user.id)
+        window.sessionStorage.setItem("spacebucks", user.spacebucks)
+        window.sessionStorage.setItem("avatar", user.image)
+        window.sessionStorage.setItem("firstName", user.firstName)
+        window.sessionStorage.setItem("lastName", user.lastName)
+        window.sessionStorage.setItem("date", user.date)
+        console.log(window.sessionStorage)
+        window.location.href = "/main"
+      })
+    }, 500)
   }
 
-  putAcceptance (submission, id) {
+  putAcceptance(submission, id) {
     console.log(submission, id)
     var url = apiUrl + "bets/" + id
     fetch(url, {
@@ -85,15 +111,16 @@ class App extends Component {
       headers: new Headers({
         "Content-Type": "application/json"
       })
-    }).then(res => res.json())
-    .catch(error => console.error("Error:", error))
-    .then(response => console.log("Success:", response))
-    .then(data => {this.setState({bets: data})
-
-  })
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.getBets()
+        return data
+      })
+      .catch(error => console.error("Error:", error))
   }
 
-  submitBet(e){
+  submitBet(e) {
     e.preventDefault()
     var form = new FormData(e.target)
     var sender = {
@@ -114,9 +141,9 @@ class App extends Component {
       }),
       body: JSON.stringify(sender)
     })
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(console.error)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(console.error)
   }
 
   render() {
@@ -127,7 +154,7 @@ class App extends Component {
           <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
           <Route path="/new-user" render={()=><CreateUser users={this.state.users}/>}/>
           <Route path="/profile" render={()=><Profile users={this.state.users} bets={this.state.bets}/>} />
-          <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users}/>} />
+          <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users} getBets={this.getBets}/>} />
         <Footer />
       </div>
       </Router>
