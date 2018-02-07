@@ -14,3 +14,26 @@
   height:80px;
   font-size: 1.75rem;
 }
+
+h2 {
+  text-align: center;
+}
+
+.cardHeaders {
+  display: grid;
+  grid-template-columns: 10% 40% 30% 20%
+}
+
+.gridcol1 {
+  grid-column: 1;
+  text-align: center;
+  vertical-align: center;
+}
+.gridcol2 {
+  grid-column: 2;
+  text-align: center
+}
+.gridcol3 {
+  grid-column: 3;
+  text-align: center
+}
