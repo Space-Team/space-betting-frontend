@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import {BrowserRouter as Router, Route, Link } from "react-router-dom"
 import { Button } from "antd"
 import BetCardsList from "../BetCardsList"
 import PostBet from "../PostBet"

@@ -101,7 +101,7 @@ class App extends Component {
       amount: form.get("bet_amount"),
       accepted: false,
       resolved: false,
-      creator: 1,
+      creator: Number(window.sessionStorage.id),
       acceptor: null,
       winner: null,
       comment: ""
