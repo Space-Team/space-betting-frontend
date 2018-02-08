@@ -121,7 +121,7 @@ class CurrBetCard extends Component {
 
 		return(
 			<div>
-				<h3>Bets I Created</h3>
+				<h2>Bets I Created</h2>
 				<CreatorList
 					currentBets={this.props.currentBets}
 					idToName={this.idToName}
@@ -131,7 +131,7 @@ class CurrBetCard extends Component {
 					washOut={this.washOut}
 					collect={this.collect}
 					/>
-				<h3>Bets I Accepted</h3>
+				<h2>Bets I Accepted</h2>
 				<AcceptorList
 					currentBets={this.props.currentBets}
 					idToName={this.idToName}
