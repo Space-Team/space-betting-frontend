@@ -1,3 +1,7 @@
+.gridcol1, .gridcol2, .gridcol3, .gridcol4 {
+  color: #051275;
+}
+
 .gridcol1 {
   grid-column: 1;
   text-align: center;
