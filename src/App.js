@@ -90,6 +90,14 @@ class App extends Component {
           }),
           body: JSON.stringify({resolved: true, winner: bet.creatorAttempt})
         })
+        .then(response => response.json())
+        .then(response => fetch(apiUrl + "bets")
+          .then(response => response.json())
+          .then(data => {
+            this.setState({
+              bets: data.bets
+            })
+          }))
       }
     })
   }

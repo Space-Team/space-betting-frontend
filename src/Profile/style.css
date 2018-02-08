@@ -1,0 +1,11 @@
+#spacebucksdiv {
+  border: 2px solid #fffef2;
+  width: 6rem;
+  border-radius: 3px;
+}
+
+.spacebucks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
