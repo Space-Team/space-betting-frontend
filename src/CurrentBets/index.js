@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import "./style.css";
 import { Button } from "antd";
 
+const apiUrl = "http://localhost:3000/"
+
 class CurrBetCard extends Component {
 	constructor(props) {
 		super(props);
 		this.idToName = this.idToName.bind(this)
+		this.iWon = this.iWon.bind(this)
+		this.putAttempt = this.putAttempt.bind(this)
 	}
 
 	idToName(id){
@@ -22,8 +26,41 @@ class CurrBetCard extends Component {
 		return name
 	}
 
+	iWon(bet){
+		var clicker = window.sessionStorage.id
+
+		if (clicker == bet.creator){
+			console.log("clicker IS creator", bet);
+			this.putAttempt({creatorAttempt: clicker}, bet.id)
+		} else if (clicker == bet.acceptor){
+			console.log("clicker IS NOT creator", bet);
+			this.putAttempt({acceptorAttempt: clicker}, bet.id)
+		}
+	}
+
+	putAttempt(sender, id){
+		fetch(apiUrl + "bets/" + id, {
+			method: "PUT",
+			headers: new Headers({
+				"Content-Type": "application/json"
+			}),
+			body: JSON.stringify(sender)
+		})
+		.then(response => response.json())
+		.catch(console.error)
+	}
+
 	render() {
-		var acceptor = "";
+
+		if(this.props.users.length < 1){
+			return(<p>Not yet</p>)
+		}
+
+		if(this.props.currentBets.lenth < 1){
+			return(<p>Almost there</p>)
+		}
+
+		var acceptor = "dodoo, nothings here.";
 
 		return this.props.currentBets.map(bet => {
 			return this.props.users.map(user => {
@@ -38,9 +75,9 @@ class CurrBetCard extends Component {
 							<p>Description: {bet.description}</p>
 							<p>Accepted by: {acceptor}</p>
 							<p className={bet.resolved ? "" : "hidden"}>{this.idToName(bet.winner)} won the bet!</p>
-							<Button>I Won</Button>
-							<Button>They Won</Button>
-							<Button>Wash</Button>
+							<Button className={bet.resolved ? "hidden" : ""} onClick={()=>{this.iWon(bet)}}>I Won</Button>
+							<Button className={bet.resolved ? "hidden" : ""}>They Won</Button>
+							<Button className={bet.resolved ? "hidden" : ""}>Wash</Button>
 						</div>
 					);
 				}
