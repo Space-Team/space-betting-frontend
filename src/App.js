@@ -5,6 +5,7 @@ import Header from "./Header"
 import Main from "./Main"
 import Footer from "./Footer"
 import Login from "./Login"
+import Logout from "./Logout"
 import Profile from "./Profile"
 import CreateUser from "./CreateUser"
 
@@ -194,7 +195,9 @@ class App extends Component {
           <Route path="/new-user" render={()=><CreateUser users={this.state.users} getUsers={this.getUsers}/>}/>
           <Route path="/profile" render={()=><Profile currentUser={this.state.currentUser} users={this.state.users} getUsers={this.getUsers} bets={this.state.bets} getBets={this.getBets}/>} />
           <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users} getBets={this.getBets} currentUser={this.state.currentUser}/>} />
-        <Footer />
+          <Route path="/logout" render={()=><Logout />} />
+
+      <Footer />
       </div>
       </Router>
     )

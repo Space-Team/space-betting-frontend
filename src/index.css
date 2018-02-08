@@ -45,3 +45,12 @@ p {
 .postBetButton, .currentBetsBtns {
   padding: 0 .5rem 0 .5rem;
 }
+
+.loginbtn {
+  background-color: #1960d1;
+  color: #fffef2;
+  margin: .5rem;
+  border-radius: 5px;
+  padding: 1rem;
+  height: 4rem
+}

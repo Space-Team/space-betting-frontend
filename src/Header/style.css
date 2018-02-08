@@ -44,6 +44,9 @@ h1 {
   display: flex;
   justify-content: flex-end;
   padding: 5px 25px;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+
 }
 
 
@@ -55,4 +58,12 @@ h1 {
 
 #profile-dropdown a {
   color: #ffffea
+}
+
+.hide {
+  display: none
+}
+
+.taller {
+  height: 3rem;
 }
