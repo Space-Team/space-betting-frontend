@@ -44,6 +44,7 @@ class CurrBetCard extends Component {
 		})
 		.then(response => response.json())
 		.then(response => {this.props.getUsers()})
+		.then(response => {this.props.getBets()})
 		.then(response => {this.props.getSB()})
 
 

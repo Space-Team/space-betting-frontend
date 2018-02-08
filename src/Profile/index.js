@@ -54,7 +54,7 @@ class Profile extends Component {
           <p className='sbucksLabel' >Spacebucks:</p>
           <h2 id='spacebucksdiv'>{sbs} <Icon type="rocket" /></h2>
         </div>
-        <CurrBetCard getSB={this.getSpacebucks} currentBets={this.state.currentBets} users={this.props.users} getUsers={this.props.getUsers} bets={this.state.bets} currentUser={this.props.currentUser}/>
+        <CurrBetCard getSB={this.getSpacebucks} getBets={this.props.getBets} currentBets={this.state.currentBets} users={this.props.users} getUsers={this.props.getUsers} bets={this.state.bets} currentUser={this.props.currentUser}/>
       </div>
     );
   }
