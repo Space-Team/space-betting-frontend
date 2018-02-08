@@ -9,7 +9,8 @@ class CreateUser extends React.Component {
     super(props)
     this.state = {
       unique: true,
-      match: false
+      match: false,
+      users: []
     }
     this.register = this.register.bind(this)
     this.checkName = this.checkName.bind(this)
@@ -40,6 +41,7 @@ class CreateUser extends React.Component {
 
   register(e){
     e.preventDefault()
+    window.sessionStorage.clear()
     var form = new FormData(e.target)
     var sender = {
       firstName: form.get("firstName"),
@@ -49,7 +51,6 @@ class CreateUser extends React.Component {
       spacebucks: 100,
       password: form.get("password")
     }
-
     this.checkName(sender.name)
     this.checkPass(sender.password, form.get("passwordConfirm"))
     setTimeout(()=>{
@@ -61,9 +62,11 @@ class CreateUser extends React.Component {
         }),
         body: JSON.stringify(sender)
       })
-      .then(response => setTimeout(()=>{window.location.href = "/"}, 500))
+      .then(response => response.json())
+      .then(response => setTimeout(()=>{window.location.href = "/Login"}, 500))
       .catch(console.error)
     }}, 200)
+
   }
 
   render(){

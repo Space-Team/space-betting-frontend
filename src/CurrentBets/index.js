@@ -11,6 +11,7 @@ class CurrBetCard extends Component {
 		this.iWon = this.iWon.bind(this)
 		this.theyWon = this.theyWon.bind(this)
 		this.putAttempt = this.putAttempt.bind(this)
+		this.washOut = this.washOut.bind(this)
 	}
 
 	idToName(id){
@@ -53,6 +54,18 @@ class CurrBetCard extends Component {
 		e.target.parentNode.className = "hidden"
 	}
 
+	washOut(e, bet){
+		e.preventDefault()
+
+		var clicker = window.sessionStorage.id
+
+		if (clicker == bet.creator){
+			this.putAttempt({creatorAttempt: 1}, bet.id)
+		} else if (clicker == bet.acceptor){
+			this.putAttempt({acceptorAttempt: 1}, bet.id)
+		}
+		e.target.parentNode.className = "hidden"
+	}
 
 	putAttempt(sender, id){
 		fetch(apiUrl + "bets/" + id, {
@@ -92,10 +105,12 @@ class CurrBetCard extends Component {
 							<p>Accepted by: {acceptor}</p>
 							<p className={bet.resolved ? "" : "hidden"}>{this.idToName(bet.winner)} won the bet!</p>
 							<div className="">
-								<Button className={bet.resolved ? "currentBetsBtns hidden" : ""} type='primary' onClick={(e)=>{this.iWon(e, bet)}}>I Won</Button>
-								<Button className={bet.resolved ? "currentBetsBtns hidden" : ""} type='primary' onClick={(e)=>{this.theyWon(e, bet)}}>They Won</Button>
-								<Button className={bet.resolved ? "currentBetsBtns hidden" : ""} type='primary' >Wash</Button>
+								<Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.iWon(e, bet)}}>I Won</Button>
+								<Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.theyWon(e, bet)}}>They Won</Button>
+								<Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.washOut(e, bet)}}>Wash</Button>
 							</div>
+							<Button className={bet.resolved && bet.winner == window.sessionStorage.id ? "currentBetsBtns" : "hidden"} type="primary" >Collect {bet.amount * 2} Spacebucks</Button>
+							<Button className={bet.resolved && bet.winner == 1 ? "currentBetsBtns" : "hidden"} type="primary" >Collect {bet.amount} Spacebucks</Button>
 						</div>
 					);
 				}

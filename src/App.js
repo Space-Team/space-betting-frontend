@@ -82,16 +82,13 @@ class App extends Component {
 
   checkResolves(bets) {
     bets.forEach(bet => {
-      if(bet.resolved === true){
-        return
-      }
-      else if (bet.creatorAttempt !== null && bet.creatorAttempt === bet.acceptorAttempt){
+      if (bet.creatorAttempt !== null && bet.creatorAttempt === bet.acceptorAttempt){
         fetch(apiUrl + "bets/" + bet.id, {
           method: "PUT",
           headers: new Headers({
             "Content-Type": "application/json"
           }),
-          body: JSON.stringify({resolved: true})
+          body: JSON.stringify({resolved: true, winner: bet.creatorAttempt})
         })
       }
     })
@@ -186,7 +183,7 @@ class App extends Component {
       <div className="App">
         <Header />
           <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
-          <Route path="/new-user" render={()=><CreateUser users={this.state.users}/>}/>
+          <Route path="/new-user" render={()=><CreateUser users={this.state.users} getUsers={this.getUsers}/>}/>
           <Route path="/profile" render={()=><Profile currentUser={this.state.currentUser} users={this.state.users} bets={this.state.bets}/>} />
           <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users} getBets={this.getBets} currentUser={this.state.currentUser}/>} />
         <Footer />
