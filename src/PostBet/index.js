@@ -40,13 +40,14 @@ class PostBet extends Component {
         <h2>Create Your Bet!</h2>
         <Form onSubmit={this.props.submitBet}>
         <p>How many spacebucks do you want to bet?</p>
-          <FormItem {...formItemLayout} >
+          <FormItem {...formItemLayout} className="outer-input-number">
             <InputNumber
               min={1}
               max={100}
               name="bet_amount"
               value={number}
               onChange={this.handleNumberChange}
+              className="input-number"
             />
           </FormItem>
           <p>Describe the bet you would like to make:</p>
