@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Button, Modal } from 'antd'
 import CurrBetCard from '../CurrentBets'
+import "./style.css";
+import { Icon } from 'antd'
 
 
 let creatorName = ''
@@ -41,11 +43,11 @@ class Profile extends Component {
     this.state.currentBets = currentBets
 
     return (
-      <div>
-        <h2>{window.sessionStorage.user}</h2>
-        <p className='sbucksLabel'>Your Spacebucks:</p>
-        <div id='spacebucksdiv'>
-          <h2>{this.getSpacebucks()}</h2>
+      <div >
+        <h2>Space Captain {window.sessionStorage.user}</h2>
+        <div className='spacebucks'>
+          <p className='sbucksLabel' >Spacebucks:</p>
+          <h2 id='spacebucksdiv'>{this.getSpacebucks()} <Icon type="rocket" /></h2>
         </div>
         <CurrBetCard currentBets={this.state.currentBets} users={this.props.users} bets={this.state.bets} currentUser={this.props.currentUser}/>
       </div>
