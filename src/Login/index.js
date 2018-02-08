@@ -18,9 +18,8 @@ class Login extends React.Component {
   render(){
     return(
       <div id="login-container">
-        <h2>Welcome...</h2>
+        <h2 className='welcome'>Welcome... Login for Liftoff</h2>
         <form id="login-box" onSubmit={this.props.validate}>
-          <h3>Login</h3>
 
           <label htmlFor="login-user-name">Username: </label>
           <input type="text" id="form-user-name" name="userName" />
@@ -28,7 +27,7 @@ class Login extends React.Component {
           <label htmlFor="login-password">Password: </label>
           <input type="password" id="form-password" name="userPass" />
 
-          <button type="button" onClick={this.forgot}>Forgot Something?</button>
+          <button id="forgot" type="button" onClick={this.forgot}>Forgot Something?</button>
 
           <button id="login-submitter" type="submit">Login</button>
           <p id="wrong-creds" className = "hidden">Username/Password are wrong...</p>

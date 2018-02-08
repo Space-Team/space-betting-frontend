@@ -1,3 +1,8 @@
 .currbets {
   border: 1px solid #1960d1;
+  background-color: #fffef2;
+}
+
+.sbucksLabel {
+  color: #fffef2;
 }
