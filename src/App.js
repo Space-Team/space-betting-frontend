@@ -28,6 +28,7 @@ class App extends Component {
     this.getBetsByCreator = this.getBetsByCreator.bind(this)
     this.getBetsByAcceptor = this.getBetsByAcceptor.bind(this)
     this.getCurrentUser = this.getCurrentUser.bind(this)
+    this.checkResolves = this.checkResolves.bind(this)
   }
 
   componentDidMount() {
@@ -42,6 +43,7 @@ class App extends Component {
     fetch(apiUrl + "bets")
       .then(response => response.json())
       .then(data => {
+        this.checkResolves(data.bets)
         this.setState({
           bets: data.bets
         })
@@ -76,6 +78,23 @@ class App extends Component {
           acceptorBets: data.bets
         })
       })
+  }
+
+  checkResolves(bets) {
+    bets.forEach(bet => {
+      if(bet.resolved === true){
+        return
+      }
+      else if (bet.creatorAttempt !== null && bet.creatorAttempt === bet.acceptorAttempt){
+        fetch(apiUrl + "bets/" + bet.id, {
+          method: "PUT",
+          headers: new Headers({
+            "Content-Type": "application/json"
+          }),
+          body: JSON.stringify({resolved: true})
+        })
+      }
+    })
   }
 
   validate(e) {

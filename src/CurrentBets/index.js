@@ -9,6 +9,7 @@ class CurrBetCard extends Component {
 		super(props);
 		this.idToName = this.idToName.bind(this)
 		this.iWon = this.iWon.bind(this)
+		this.theyWon = this.theyWon.bind(this)
 		this.putAttempt = this.putAttempt.bind(this)
 	}
 
@@ -26,17 +27,32 @@ class CurrBetCard extends Component {
 		return name
 	}
 
-	iWon(bet){
+	iWon(e, bet){
+		e.preventDefault()
+
 		var clicker = window.sessionStorage.id
 
 		if (clicker == bet.creator){
-			console.log("clicker IS creator", bet);
 			this.putAttempt({creatorAttempt: clicker}, bet.id)
 		} else if (clicker == bet.acceptor){
-			console.log("clicker IS NOT creator", bet);
 			this.putAttempt({acceptorAttempt: clicker}, bet.id)
 		}
+		e.target.parentNode.className = "hidden"
 	}
+
+	theyWon(e, bet){
+		e.preventDefault()
+
+		var clicker = window.sessionStorage.id
+
+		if (clicker == bet.creator){
+			this.putAttempt({creatorAttempt: bet.acceptor}, bet.id)
+		} else if (clicker == bet.acceptor){
+			this.putAttempt({acceptorAttempt: bet.creator}, bet.id)
+		}
+		e.target.parentNode.className = "hidden"
+	}
+
 
 	putAttempt(sender, id){
 		fetch(apiUrl + "bets/" + id, {
@@ -75,9 +91,11 @@ class CurrBetCard extends Component {
 							<p>Description: {bet.description}</p>
 							<p>Accepted by: {acceptor}</p>
 							<p className={bet.resolved ? "" : "hidden"}>{this.idToName(bet.winner)} won the bet!</p>
-							<Button className={bet.resolved ? "hidden" : ""} onClick={()=>{this.iWon(bet)}}>I Won</Button>
-							<Button className={bet.resolved ? "hidden" : ""}>They Won</Button>
-							<Button className={bet.resolved ? "hidden" : ""}>Wash</Button>
+							<div className="">
+								<Button className={bet.resolved ? "hidden" : ""} onClick={(e)=>{this.iWon(e, bet)}}>I Won</Button>
+								<Button className={bet.resolved ? "hidden" : ""} onClick={(e)=>{this.theyWon(e, bet)}}>They Won</Button>
+								<Button className={bet.resolved ? "hidden" : ""}>Wash</Button>
+							</div>
 						</div>
 					);
 				}
