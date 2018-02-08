@@ -5,6 +5,21 @@ import { Button } from "antd";
 class CurrBetCard extends Component {
 	constructor(props) {
 		super(props);
+		this.idToName = this.idToName.bind(this)
+	}
+
+	idToName(id){
+		if(this.props.users.length < 1){
+			return <p>Waiting on data</p>
+		}
+
+		var name
+		this.props.users.forEach(user => {
+			if (user.id === id){
+				name = user.name
+			}
+		})
+		return name
 	}
 
 	render() {
@@ -22,8 +37,9 @@ class CurrBetCard extends Component {
 							<p>Created by: {user.name}</p>
 							<p>Description: {bet.description}</p>
 							<p>Accepted by: {acceptor}</p>
-							<Button>Creator Won</Button>
-							<Button>Acceptor Won</Button>
+							<p className={bet.resolved ? "" : "hidden"}>{this.idToName(bet.winner)} won the bet!</p>
+							<Button>I Won</Button>
+							<Button>They Won</Button>
 							<Button>Wash</Button>
 						</div>
 					);
