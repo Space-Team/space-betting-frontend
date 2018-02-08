@@ -16,6 +16,7 @@ class Profile extends Component {
       bets: this.props.bets,
       currentBets: null
     }
+    this.getSpacebucks = this.getSpacebucks.bind(this)
   }
 
   componentDidMount() {
@@ -29,6 +30,7 @@ class Profile extends Component {
 
   getSpacebucks(){
     var sbs = 0
+    this.props.getUsers()
     this.props.users.forEach(user => {
       if (window.sessionStorage.id == user.id){
         sbs = user.spacebucks
@@ -49,7 +51,7 @@ class Profile extends Component {
           <p className='sbucksLabel' >Spacebucks:</p>
           <h2 id='spacebucksdiv'>{this.getSpacebucks()} <Icon type="rocket" /></h2>
         </div>
-        <CurrBetCard currentBets={this.state.currentBets} users={this.props.users} bets={this.state.bets} currentUser={this.props.currentUser}/>
+        <CurrBetCard getSB={this.getSpacebucks} currentBets={this.state.currentBets} users={this.props.users} bets={this.state.bets} currentUser={this.props.currentUser}/>
       </div>
     );
   }

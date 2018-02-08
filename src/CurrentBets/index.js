@@ -42,6 +42,8 @@ class CurrBetCard extends Component {
 			}),
 			body: JSON.stringify({paid: true})
 		})
+		.then(response => response.json())
+		.then(respose => this.props.getSB())
 	}
 
 	idToName(id){
@@ -123,6 +125,7 @@ class CurrBetCard extends Component {
 			<div>
 				<h3>Bets I Created</h3>
 				<CreatorList
+					getSB={this.props.getSB}
 					currentBets={this.props.currentBets}
 					idToName={this.idToName}
 					iWon={this.iWon}
@@ -133,6 +136,7 @@ class CurrBetCard extends Component {
 					/>
 				<h3>Bets I Accepted</h3>
 				<AcceptorList
+					getSB={this.props.getSB}
 					currentBets={this.props.currentBets}
 					idToName={this.idToName}
 					iWon={this.iWon}
