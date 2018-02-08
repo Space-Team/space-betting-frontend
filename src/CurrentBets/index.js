@@ -100,9 +100,10 @@ class CurrBetCard extends Component {
 				if (bet.creator === user.id) {
 					return (
 						<div className="currbets" key={bet.id}>
-							<p>Created by: {user.name}</p>
-							<p>Description: {bet.description}</p>
-							<p>Accepted by: {acceptor}</p>
+							<p className="betcardtext">Created by: {user.name}</p>
+							<p className="betcardtext">Description: {bet.description}</p>
+							<p className="betcardtext">Amount: {bet.amount}</p>
+							<p className="betcardtext">Accepted by: {acceptor}</p>
 							<p className={bet.resolved ? "" : "hidden"}>{this.idToName(bet.winner)} won the bet!</p>
 							<div className="">
 								<Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.iWon(e, bet)}}>I Won</Button>
