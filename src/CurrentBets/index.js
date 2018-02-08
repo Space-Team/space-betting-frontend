@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 import { Button } from "antd";
 
-const apiUrl = "http://localhost:3000/"
+const apiUrl = "http://planet-wager.herokuapp.com/"
 
 class CurrBetCard extends Component {
 	constructor(props) {
