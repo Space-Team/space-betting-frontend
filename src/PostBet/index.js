@@ -8,25 +8,24 @@ class PostBet extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      amount: 0
+      amount: 1
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleNumberChange = this.handleNumberChange.bind(this)
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log("Received values of form: ", values)
-      }
-    })
   }
 
   handleNumberChange(value) {
     this.setState({
       amount: value
     })
+  }
+
+  handleSubmit(e){
+    e.preventDefault()
+    this.props.submitBet(e)
+    e.target.reset()
+    this.setState({amount: 1})
+    this.props.toggler(e)
   }
 
   render() {
@@ -38,7 +37,7 @@ class PostBet extends Component {
     return (
       <section className={this.props.toggle ? "post-form" : "hidden"}>
         <h2>Create Your Bet!</h2>
-        <Form onSubmit={this.props.submitBet}>
+        <Form onSubmit={this.handleSubmit}>
         <p>How many spacebucks do you want to bet?</p>
           <FormItem {...formItemLayout} className="outer-input-number">
             <InputNumber
