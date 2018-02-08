@@ -1,13 +1,37 @@
 import React from "react"
 import "./style.css"
 import Profile from '../Profile'
+import { Menu, Dropdown, Icon } from 'antd';
+
+const loggedInMenu = (
+  <Menu>
+    <Menu.Item key="0">
+      <a href="/profile">Profile</a>
+    </Menu.Item>
+    <Menu.Item key="1">
+      <a href="/logout">Logout</a>
+    </Menu.Item>
+    <Menu.Divider />
+  </Menu>
+);
+
+const loggedOutMenu = (
+  <Menu>
+    <Menu.Item key="0">
+      <a href="/login">Login</a>
+    </Menu.Item>
+    <Menu.Item key="1">
+      <a href="/profile">Profile</a>
+    </Menu.Item>
+    <Menu.Divider />
+  </Menu>
+);
+
+
 
 class Header extends React.Component {
   constructor(props){
     super(props)
-    this.state = {
-
-    }
   }
 
   getImg(id){
@@ -26,10 +50,6 @@ class Header extends React.Component {
     }
   }
 
-  logout(){
-    window.sessionStorage.clear()
-  }
-
   render(){
     return(
       <div id="high">
@@ -40,16 +60,26 @@ class Header extends React.Component {
 
 
         <div id="profile-menu">
-          <a id="profile-button" href="/profile">
-            <img src={this.getImg(window.sessionStorage.avatar)}/>
-          </a>
-          <div id="profile-dropdown">
-            <a href="/Login">Login</a>
-            <a href="/profile">Profile</a>
-            <a href="/main" onClick={this.logout}>Logout</a>
-          </div>
+          <Dropdown overlay={loggedInMenu} trigger={['click']}>
+            <a className={window.sessionStorage.length ? "ant-dropdown-link" : "ant-dropdown-link hide"} href="#">
+              <div className="taller">
+                <img src={this.getImg(window.sessionStorage.avatar)}/>
+                <Icon type="down" />
+              </div>
+            </a>
+          </Dropdown>
         </div>
 
+        <div id="profile-menu">
+          <Dropdown overlay={loggedOutMenu} trigger={['click']}>
+              <a className={window.sessionStorage.length ? "ant-dropdown-link hide" : "ant-dropdown-link"}  href="#">
+                <div className="taller">
+                  <img src={this.getImg(window.sessionStorage.avatar)}/>
+                  <Icon type="down" />
+                </div>
+              </a>
+          </Dropdown>
+        </div>
 
       </div>
 

@@ -118,7 +118,7 @@ class BetCard extends Component {
           contentLabel="Accept Modal"
           onCancel={this.closeAcceptModal}
         >
-          <p>
+          <p id="modalator">
             Are you sure you sure you want to bet {this.props.bet.name}{" "}
             {this.props.bet.amount} spacebucks?
           </p>

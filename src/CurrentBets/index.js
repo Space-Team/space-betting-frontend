@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./style.css";
-import { Button } from "antd";
-import { Icon } from 'antd'
+import { Button, Icon } from "antd"
+import CreatorList from "./CreatorList"
+import AcceptorList from "./AcceptorList"
 
 
 const apiUrl = "http://planet-wager.herokuapp.com/"
@@ -41,6 +42,14 @@ class CurrBetCard extends Component {
 			}),
 			body: JSON.stringify({paid: true})
 		})
+		.then(response => response.json())
+		.then(response => {this.props.getUsers()})
+		.then(response => {this.props.getBets()})
+		.then(response => {this.props.getSB()})
+
+
+		console.log(e.target.parentNode.parentNode.parentNode.parentNode.children[1].children[1].textContent)
+
 	}
 
 	idToName(id){
@@ -118,34 +127,32 @@ class CurrBetCard extends Component {
 			return(<p>Almost there</p>)
 		}
 
-		var acceptor = "dodoo, nothings here.";
-
-		return this.props.currentBets.map(bet => {
-			return this.props.users.map(user => {
-				if (bet.acceptor === user.id) {
-					acceptor = user.name;
-				}
-
-				if (bet.creator === user.id) {
-					return (
-						<div className="currbets" key={bet.id}>
-							<p className="betcardtext gridcol1">Created by: <span className="strong">{user.name}</span></p>
-							<p className="betcardtext gridcol2">Accepted by: <span className="strong">{acceptor}</span></p>
-							<p className="betcardtext gridcolspan">Description: {bet.description}</p>
-							<p className={bet.resolved ? "" : "hidden"}>{this.idToName(bet.winner)} won the bet!</p>
-							<div className="gridcolspan btns">
-								<Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.iWon(e, bet)}}>I Won</Button>
-								<Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='danger' onClick={(e)=>{this.theyWon(e, bet)}}>They Won</Button>
-								<Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.washOut(e, bet)}}>Wash</Button>
-							</div>
-							<Button className={bet.resolved && !bet.paid && bet.winner == window.sessionStorage.id ? "currentBetsBtns" : "hidden"} type="primary" onClick={(e)=>{this.collect(e, bet, bet.amount * 2)}}>Collect {bet.amount * 2} Spacebucks</Button>
-							<Button className={bet.resolved && !bet.paid && bet.winner == 1 ? "currentBetsBtns" : "hidden"} type="primary" onClick={(e)=>{this.collect(e, bet, bet.amount)}}>Collect {bet.amount} Spacebucks</Button>
-							<p className="betcardtext amount">Amount: {bet.amount} <Icon type="rocket" /></p>
-						</div>
-					);
-				}
-			});
-		});
+		return(
+			<div>
+				<h2>Bets I Created</h2>
+				<CreatorList
+					getSB={this.props.getSB}
+					currentBets={this.props.currentBets}
+					idToName={this.idToName}
+					iWon={this.iWon}
+					theyWon={this.theyWon}
+					putAttempt={this.putAttempt}
+					washOut={this.washOut}
+					collect={this.collect}
+					/>
+				<h2>Bets I Accepted</h2>
+				<AcceptorList
+					getSB={this.props.getSB}
+					currentBets={this.props.currentBets}
+					idToName={this.idToName}
+					iWon={this.iWon}
+					theyWon={this.theyWon}
+					putAttempt={this.putAttempt}
+					washOut={this.washOut}
+					collect={this.collect}
+					/>
+			</div>
+		)
 	}
 }
 
