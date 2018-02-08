@@ -29,10 +29,9 @@ class Profile extends Component {
   }
 
   getSpacebucks(){
-    var sbs = 0
-    this.props.getUsers()
+    let sbs = 0
     this.props.users.forEach(user => {
-      if (window.sessionStorage.id == user.id){
+      if (Number(window.sessionStorage.id) === user.id){
         sbs = user.spacebucks
       }
     })
@@ -40,18 +39,22 @@ class Profile extends Component {
   }
 
   render() {
+
     let currentBets = this.props.bets.filter(bet => {
         return window.sessionStorage.id == bet.creator || window.sessionStorage.id == bet.acceptor})
     this.state.currentBets = currentBets
+
+    let sbs = this.getSpacebucks()
+    console.log(sbs)
 
     return (
       <div >
         <h2>Space Captain {window.sessionStorage.user}</h2>
         <div className='spacebucks'>
           <p className='sbucksLabel' >Spacebucks:</p>
-          <h2 id='spacebucksdiv'>{this.getSpacebucks()} <Icon type="rocket" /></h2>
+          <h2 id='spacebucksdiv'>{sbs} <Icon type="rocket" /></h2>
         </div>
-        <CurrBetCard getSB={this.getSpacebucks} currentBets={this.state.currentBets} users={this.props.users} bets={this.state.bets} currentUser={this.props.currentUser}/>
+        <CurrBetCard getSB={this.getSpacebucks} currentBets={this.state.currentBets} users={this.props.users} getUsers={this.props.getUsers} bets={this.state.bets} currentUser={this.props.currentUser}/>
       </div>
     );
   }

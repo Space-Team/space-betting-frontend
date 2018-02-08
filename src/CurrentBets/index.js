@@ -43,7 +43,12 @@ class CurrBetCard extends Component {
 			body: JSON.stringify({paid: true})
 		})
 		.then(response => response.json())
-		.then(respose => this.props.getSB())
+		.then(response => {this.props.getUsers()})
+		.then(response => {this.props.getSB()})
+
+
+		console.log(e.target.parentNode.parentNode.parentNode.parentNode.children[1].children[1].textContent)
+
 	}
 
 	idToName(id){
