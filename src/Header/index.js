@@ -9,9 +9,12 @@ const loggedInMenu = (
       <a href="/profile">Profile</a>
     </Menu.Item>
     <Menu.Item key="1">
-      <a href="/logout">Logout</a>
+      <a href="/main">New Bets</a>
     </Menu.Item>
     <Menu.Divider />
+    <Menu.Item key="2">
+      <a href="/logout">Logout</a>
+    </Menu.Item>
   </Menu>
 );
 
@@ -21,9 +24,8 @@ const loggedOutMenu = (
       <a href="/login">Login</a>
     </Menu.Item>
     <Menu.Item key="1">
-      <a href="/profile">Profile</a>
+      <a href="/main">New Bets</a>
     </Menu.Item>
-    <Menu.Divider />
   </Menu>
 );
 
