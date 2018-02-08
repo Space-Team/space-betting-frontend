@@ -12,6 +12,33 @@ class CurrBetCard extends Component {
 		this.theyWon = this.theyWon.bind(this)
 		this.putAttempt = this.putAttempt.bind(this)
 		this.washOut = this.washOut.bind(this)
+		this.collect = this.collect.bind(this)
+	}
+
+	collect(e, bet, amount){
+		e.preventDefault()
+		var newAmount
+		this.props.users.forEach(user => {
+			if (user.id === bet.winner){
+				newAmount = user.spacebucks + amount
+			}
+		})
+
+		fetch(apiUrl + "users/" + bet.winner, {
+			method: "PUT",
+			headers: new Headers({
+				"Content-Type": "Application/json"
+			}),
+			body: JSON.stringify({spacebucks: newAmount})
+		})
+
+		fetch(apiUrl + "bets/" + bet.id, {
+			method: "PUT",
+			headers: new Headers({
+				"Content-Type": "Application/json"
+			}),
+			body: JSON.stringify({paid: true})
+		})
 	}
 
 	idToName(id){
@@ -109,8 +136,8 @@ class CurrBetCard extends Component {
 								<Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.theyWon(e, bet)}}>They Won</Button>
 								<Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.washOut(e, bet)}}>Wash</Button>
 							</div>
-							<Button className={bet.resolved && bet.winner == window.sessionStorage.id ? "currentBetsBtns" : "hidden"} type="primary" >Collect {bet.amount * 2} Spacebucks</Button>
-							<Button className={bet.resolved && bet.winner == 1 ? "currentBetsBtns" : "hidden"} type="primary" >Collect {bet.amount} Spacebucks</Button>
+							<Button className={bet.resolved && !bet.paid && bet.winner == window.sessionStorage.id ? "currentBetsBtns" : "hidden"} type="primary" onClick={(e)=>{this.collect(e, bet, bet.amount * 2)}}>Collect {bet.amount * 2} Spacebucks</Button>
+							<Button className={bet.resolved && !bet.paid && bet.winner == 1 ? "currentBetsBtns" : "hidden"} type="primary" onClick={(e)=>{this.collect(e, bet, bet.amount)}}>Collect {bet.amount} Spacebucks</Button>
 						</div>
 					);
 				}
