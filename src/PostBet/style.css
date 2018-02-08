@@ -11,3 +11,15 @@ h2 {
   flex-flow: column;
   align-items: center;
 }
+
+.outer-input-number {
+  display: flex !important;
+  flex-flow: column !important;
+  align-items: center !important; 
+}
+
+.input-number {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
