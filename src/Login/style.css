@@ -13,3 +13,40 @@
 .hidden {
   display: none;
 }
+
+label, p {
+  color: #fffef2
+}
+
+label {
+  padding-top: .5rem;
+}
+
+button {
+  background-color: #1960d1;
+  color: #fffef2;
+  margin: .5rem;
+  border-radius: 5px;
+}
+
+#create-new-user, #login-submitter, #forgot {
+  color: #fffef2;
+  width: 9.5rem;
+}
+
+#forgot {
+  margin: 1rem 0 1rem 0;
+  padding: 0rem;
+}
+
+#login-submitter {
+  margin: 1rem 0 1rem 0;
+  padding: .5rem;
+  height: 4rem;
+}
+
+#create-new-user {
+  margin: 4rem 0 1rem 0;
+  padding: .5rem;
+  height: 4rem;
+}

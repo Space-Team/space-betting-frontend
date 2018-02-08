@@ -9,14 +9,16 @@
 }
 .gridcol3 {
   grid-column: 3;
-  text-align: center
+  text-align: center;
 }
-.gridcol3 {
+.gridcol4 {
   grid-column: 4;
-  text-align: center
+  text-align: center;
+  align-self: center;
 }
 .maincard {
   display: grid;
-  grid-template-columns: 10% 40% 30% 20%
-
+  grid-template-columns: 10% 40% 30% 20%;
+  background-color: #fffef2;
+  margin: .25rem;
 }
