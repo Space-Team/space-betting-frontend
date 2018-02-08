@@ -1,7 +1,7 @@
 import React from "react"
 import "./style.css"
 
-const apiUrl = "https://glacial-peak-21428.herokuapp.com/"
+const apiUrl = "http://localhost:3000/"
 
 class Login extends React.Component {
 

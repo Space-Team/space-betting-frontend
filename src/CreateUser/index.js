@@ -2,7 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import "./style.css"
 
-const apiUrl = "https://planet-wager.herokuapp.com/users"
+const apiUrl = "http://localhost:3000/users"
 
 class CreateUser extends React.Component {
   constructor(props){

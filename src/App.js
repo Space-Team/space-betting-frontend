@@ -8,7 +8,7 @@ import Login from "./Login"
 import Profile from "./Profile"
 import CreateUser from "./CreateUser"
 
-const apiUrl = "https://planet-wager.herokuapp.com/"
+const apiUrl = "http://localhost:3000/"
 
 class App extends Component {
   constructor(props) {

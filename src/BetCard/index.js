@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Button, Modal } from "antd"
 import "./style.css"
 
-const apiUrl = "https://planet-wager.herokuapp.com/"
+const apiUrl = "http://localhost:3000/"
 
 let creatorName = ""
 
