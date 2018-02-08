@@ -90,18 +90,12 @@ class CurrBetCard extends Component {
 							<p>Created by: {user.name}</p>
 							<p>Description: {bet.description}</p>
 							<p>Accepted by: {acceptor}</p>
-<<<<<<< HEAD
 							<p className={bet.resolved ? "" : "hidden"}>{this.idToName(bet.winner)} won the bet!</p>
 							<div className="">
-								<Button className={bet.resolved ? "hidden" : ""} onClick={(e)=>{this.iWon(e, bet)}}>I Won</Button>
-								<Button className={bet.resolved ? "hidden" : ""} onClick={(e)=>{this.theyWon(e, bet)}}>They Won</Button>
-								<Button className={bet.resolved ? "hidden" : ""}>Wash</Button>
+								<Button className={bet.resolved ? "currentBetsBtns hidden" : ""} type='primary' onClick={(e)=>{this.iWon(e, bet)}}>I Won</Button>
+								<Button className={bet.resolved ? "currentBetsBtns hidden" : ""} type='primary' onClick={(e)=>{this.theyWon(e, bet)}}>They Won</Button>
+								<Button className={bet.resolved ? "currentBetsBtns hidden" : ""} type='primary' >Wash</Button>
 							</div>
-=======
-							<Button className='currentBetsBtns' type='primary'>Creator Won</Button>
-							<Button className='currentBetsBtns' type='primary'>Acceptor Won</Button>
-							<Button className='currentBetsBtns' type='primary'>Wash</Button>
->>>>>>> d8065b216a25dd2c5a9c1d557e9941cabd6dbdee
 						</div>
 					);
 				}
