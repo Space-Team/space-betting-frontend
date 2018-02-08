@@ -4,12 +4,16 @@ describe('Form Submission', () => {
     cy.window().then((win) => {
       win.sessionStorage.clear();
     });
-    cy.title().should('include', 'Planet Wager');
-    // Create user adventurous-amber
     cy.get('#create-new-user').click();
+    cy.get('#exists-warning').should('have.class', 'hidden');
     cy.get('#register-first-name').type('Amber');
     cy.get('#register-last-name').type('Johnson');
-    // Should get 'already exists'
+    cy.get('#register-user-name').type('adventurous-amber');
+    cy.get('#avatarChoice3').click();
+    cy.get('#form-password').type('adventurous');
+    cy.get('#form-password-confirm').type('adventurous');
+    cy.get('#login-submitter').click();
+    cy.get('#exists-warning').should('not.have.class', 'hidden');
     // Login with incorrect info
     // Should get error
     // Login correctly
