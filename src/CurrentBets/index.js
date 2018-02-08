@@ -123,7 +123,7 @@ class CurrBetCard extends Component {
 
 		return(
 			<div>
-				<h3>Bets I Created</h3>
+				<h2>Bets I Created</h2>
 				<CreatorList
 					getSB={this.props.getSB}
 					currentBets={this.props.currentBets}
@@ -134,7 +134,7 @@ class CurrBetCard extends Component {
 					washOut={this.washOut}
 					collect={this.collect}
 					/>
-				<h3>Bets I Accepted</h3>
+				<h2>Bets I Accepted</h2>
 				<AcceptorList
 					getSB={this.props.getSB}
 					currentBets={this.props.currentBets}
