@@ -43,7 +43,7 @@ class Profile extends Component {
     return (
       <div>
         <h1>{window.sessionStorage.user}</h1>
-        <p>Spacebucks:</p>
+        <p className='sbucksLabel'>Spacebucks:</p>
         <div id='spacebucksdiv'>
           <h2>{this.getSpacebucks()}</h2>
         </div>

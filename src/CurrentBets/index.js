@@ -22,9 +22,9 @@ class CurrBetCard extends Component {
 							<p>Created by: {user.name}</p>
 							<p>Description: {bet.description}</p>
 							<p>Accepted by: {acceptor}</p>
-							<Button>Creator Won</Button>
-							<Button>Acceptor Won</Button>
-							<Button>Wash</Button>
+							<Button className='currentBetsBtns' type='primary'>Creator Won</Button>
+							<Button className='currentBetsBtns' type='primary'>Acceptor Won</Button>
+							<Button className='currentBetsBtns' type='primary'>Wash</Button>
 						</div>
 					);
 				}

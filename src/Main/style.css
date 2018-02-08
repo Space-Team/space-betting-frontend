@@ -7,12 +7,17 @@
   flex-flow: column;
   align-items: center;
   margin: 30px;
+
 }
 
 #post-button {
-  width: 200px;
-  height:80px;
+  width: 14rem;
+  height: 5.5rem;
   font-size: 1.75rem;
+  color: #fffef2;
+  border-color: #fffef2;
+  background-color: #1960d1;
+  border-radius: 10px;
 }
 
 h2 {
@@ -21,7 +26,9 @@ h2 {
 
 .cardHeaders {
   display: grid;
-  grid-template-columns: 10% 40% 30% 20%
+  grid-template-columns: 10% 40% 30% 20%;
+  background-color: #fffef2;
+  margin: .25rem;
 }
 
 .gridcol1 {
@@ -31,9 +38,11 @@ h2 {
 }
 .gridcol2 {
   grid-column: 2;
-  text-align: center
+  text-align: center;
+  font-style: bold
 }
 .gridcol3 {
   grid-column: 3;
-  text-align: center
+  text-align: center;
+  font-style: bold
 }

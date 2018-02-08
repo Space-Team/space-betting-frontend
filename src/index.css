@@ -2,8 +2,46 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-image: url('./images/spaceback.jpg')
 }
 
 h1 {
   margin-bottom: 0rem
+}
+
+h3, h2, h1 {
+  color: #fffef2
+}
+
+.welcome {
+  color: #fffef2;
+  font-weight: bold;
+  margin-top: 1rem
+}
+
+p {
+  margin-bottom: 0;
+  color: #051275;
+}
+
+.colheader {
+  font-weight: bold;
+}
+
+.ant-btn {
+  padding: 0;
+  margin: .25rem .45rem .25rem .45rem;
+}
+
+.ant-btn-primary {
+  border-color: #051275;
+  background-color: #1960d1;
+}
+
+.ant-form p {
+  color: #fffef2;
+}
+
+.postBetButton, .currentBetsBtns {
+  padding: 0 .5rem 0 .5rem;
 }
