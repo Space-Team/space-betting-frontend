@@ -41,7 +41,7 @@ class Header extends React.Component {
 
         <div id="profile-menu">
           <a id="profile-button" href="/profile">
-            <img src={this.getImg(window.sessionStorage.id)}/>
+            <img src={this.getImg(window.sessionStorage.avatar)}/>
           </a>
           <div id="profile-dropdown">
             <a href="/Login">Login</a>
