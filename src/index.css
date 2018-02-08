@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-image: url('./images/spaceback.jpg')
+  background-image: url('./images/startback.jpg')
 }
 
 h1 {
@@ -29,7 +29,7 @@ p {
 }
 
 .ant-btn {
-  padding: 0;
+  padding: 0 .5rem 0 .5rem;
   margin: .25rem .45rem .25rem .45rem;
 }
 
