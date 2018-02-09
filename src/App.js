@@ -30,6 +30,7 @@ class App extends Component {
     this.getBetsByAcceptor = this.getBetsByAcceptor.bind(this)
     this.getCurrentUser = this.getCurrentUser.bind(this)
     this.checkResolves = this.checkResolves.bind(this)
+    this.specialCollect = this.specialCollect.bind(this)
   }
 
   componentDidMount() {
@@ -186,6 +187,27 @@ class App extends Component {
     })
   }
 
+  specialCollect(e){
+    e.preventDefault()
+		var newAmount
+		this.state.users.forEach(user => {
+			if (user.id === Number(window.sessionStorage.id)){
+				newAmount = user.spacebucks + 100
+			}
+		})
+
+		fetch(apiUrl + "users/" + Number(window.sessionStorage.id), {
+			method: "PUT",
+			headers: new Headers({
+				"Content-Type": "Application/json"
+			}),
+			body: JSON.stringify({spacebucks: newAmount})
+		})
+    .then(response => response.json())
+    .catch(console.error)
+    .then(response => this.getUsers())
+  }
+
   render() {
     return (
       <Router>
@@ -197,7 +219,7 @@ class App extends Component {
           <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users} getBets={this.getBets} currentUser={this.state.currentUser}/>} />
           <Route path="/logout" render={()=><Logout />} />
 
-      <Footer />
+      <Footer sc={this.specialCollect} users={this.state.users}/>
       </div>
       </Router>
     )
