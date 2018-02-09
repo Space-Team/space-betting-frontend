@@ -9,7 +9,7 @@ import Logout from "./Logout"
 import Profile from "./Profile"
 import CreateUser from "./CreateUser"
 
-const apiUrl = "http://planet-wager.herokuapp.com/"
+const apiUrl = "https://planet-wager.herokuapp.com/"
 
 class App extends Component {
   constructor(props) {

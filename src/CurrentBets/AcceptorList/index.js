@@ -1,7 +1,7 @@
 import React from "react"
 import { Button, Icon } from "antd"
 
-const apiUrl = "http://planet-wager.herokuapp.com/"
+const apiUrl = "https://planet-wager.herokuapp.com/"
 
 class AcceptorList extends React.Component {
   constructor(props){
