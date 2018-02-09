@@ -7,4 +7,5 @@
   align-items: flex-end;
   bottom: 0;
   color: #fffef2;
+  z-index: -1
 }
