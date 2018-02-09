@@ -26,7 +26,7 @@ class CreatorList extends React.Component {
             <p className={bet.paid && bet.winner === Number(window.sessionStorage.id) ? "betcardtext" : "betcardtext hidden"}>Spacebucks Deposited!</p>
             <div className="gridcolspan btns">
               <Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.props.iWon(e, bet)}}>I Won</Button>
-              <Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='danger' onClick={(e)=>{this.props.theyWon(e, bet)}}>They Won</Button>
+              <Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='danger' onClick={(e)=>{this.props.theyWon(e, bet)}}>I Lost</Button>
               <Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.props.washOut(e, bet)}}>Wash</Button>
             </div>
             <Button className={bet.resolved && !bet.paid && bet.winner === Number(window.sessionStorage.id) ? "currentBetsBtns" : "hidden"} type="primary" onClick={(e)=>{this.props.collect(e, bet, bet.amount * 2)}}>Collect {bet.amount * 2} Spacebucks</Button>

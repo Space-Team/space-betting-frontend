@@ -15,11 +15,16 @@ h2 {
 .outer-input-number {
   display: flex !important;
   flex-flow: column !important;
-  align-items: center !important; 
+  align-items: center !important;
 }
 
 .input-number {
   display: flex;
   flex-flow: column;
   align-items: center;
+}
+
+.create {
+  border-color: #fffef2;
+  margin: .25rem .45rem .25rem .45rem;
 }
