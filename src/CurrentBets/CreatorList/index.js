@@ -21,8 +21,8 @@ class CreatorList extends React.Component {
           <div className="currbets" key={bet.id}>
             <p className="betcardtext gridcol1">Creator: <span className="strong">{window.sessionStorage.user}</span></p>
             <p className="betcardtext gridcol2">Acceptor: <span className="strong">{this.props.idToName(bet.acceptor) || "No one has accepted this bet yet"}</span></p>
-            <p className="betcardtext gridcolspan">The Bet: {bet.description}</p>
-            <p className={bet.resolved ? "betcardtext" : "betcardtext hidden"}>{this.props.idToName(bet.winner)} won the bet!</p>
+            <p className="betcardtext gridcolspan">The Bet: <span className="strong">{bet.description}</span></p>
+            <p className={bet.resolved ? "betcardtext winner gridcolspan" : "betcardtext winner hidden"}>{this.props.idToName(bet.winner)} won the bet!</p>
             <p className={bet.paid && bet.winner === Number(window.sessionStorage.id) ? "betcardtext" : "betcardtext hidden"}>Spacebucks Deposited!</p>
             <div className="gridcolspan btns">
               <Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.props.iWon(e, bet)}}>I Won</Button>

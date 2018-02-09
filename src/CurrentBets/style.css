@@ -55,6 +55,19 @@
   margin-top: 10px;
 }
 
+.betcardtext.gridcolspan span {
+  font-weight: bold;
+}
+
+.betcardtext.winner{
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  background-color: #051275;
+  color: #fffef2;
+}
+
 .btns {
   grid-row: 3/4
 }
