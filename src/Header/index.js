@@ -57,7 +57,7 @@ class Header extends React.Component {
       <div id="high">
 
         <div id="logo-banner">
-          <a href="main"><h1 id="logo">Planet Wager</h1></a>
+          <a href="main"><img height="50px" src="./images/PW-LOGO.png" alt="Planet Wager Logo" /></a>
         </div>
 
 
