@@ -5,6 +5,8 @@
 
 # testing
 /coverage
+/tests
+cypress.json
 
 # production
 /build
