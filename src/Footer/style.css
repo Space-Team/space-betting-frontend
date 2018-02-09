@@ -9,3 +9,7 @@
   color: #fffef2;
   z-index: -1
 }
+
+#special {
+  border: 2px solid white;
+}

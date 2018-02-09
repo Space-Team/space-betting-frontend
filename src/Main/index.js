@@ -3,6 +3,7 @@ import { Button } from "antd"
 import BetCardsList from "../BetCardsList"
 import PostBet from "../PostBet"
 import "./style.css"
+import { Icon } from "antd"
 
 class Main extends Component {
 
@@ -14,6 +15,7 @@ class Main extends Component {
     }
     this.toggleForm = this.toggleForm.bind(this)
     this.toggleSuccess = this.toggleSuccess.bind(this)
+    this.getSpacebucks = this.getSpacebucks.bind(this)
   }
 
   toggleForm(e){
@@ -32,6 +34,16 @@ class Main extends Component {
     setTimeout(()=>{this.toggleForm(e)}, 3000)
   }
 
+  getSpacebucks(){
+    let sbs = 0
+    this.props.users.forEach(user => {
+      if (Number(window.sessionStorage.id) === user.id){
+        sbs = user.spacebucks
+      }
+    })
+    return sbs
+  }
+
   render () {
 
     return (
@@ -41,6 +53,12 @@ class Main extends Component {
             <PostBet id="post-bet-box" submitBet={this.props.submitBet} toggle={this.state.betsToggle} toggler={this.toggleForm} toggleSuccess={this.toggleSuccess}/>
             <p className={this.state.successToggle ? "success-message" : "hidden"}>You successfully made your bet! Now someone just has to accept it</p>
           </div>
+
+          <div className={window.sessionStorage.length > 0 ? 'spacebucks' : 'spacebucks hidden'}>
+            <p className='sbucksLabel' >Spacebucks:</p>
+            <h2 id='spacebucksdiv'>{this.getSpacebucks()} <Icon type="rocket" /></h2>
+          </div>
+
           <h2>Available Bets</h2>
           <div className="cardHeaders">
             <p className="gridcol1 colheader">$$$</p>
