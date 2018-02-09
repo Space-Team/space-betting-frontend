@@ -5,7 +5,7 @@ import CreatorList from "./CreatorList"
 import AcceptorList from "./AcceptorList"
 
 
-const apiUrl = "http://planet-wager.herokuapp.com/"
+const apiUrl = "https://planet-wager.herokuapp.com/"
 
 class CurrBetCard extends Component {
 	constructor(props) {

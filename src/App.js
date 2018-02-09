@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom"
 import "./App.css"
 import Header from "./Header"
 import Main from "./Main"
@@ -9,7 +9,7 @@ import Logout from "./Logout"
 import Profile from "./Profile"
 import CreateUser from "./CreateUser"
 
-const apiUrl = "http://planet-wager.herokuapp.com/"
+const apiUrl = "https://planet-wager.herokuapp.com/"
 
 class App extends Component {
   constructor(props) {
@@ -214,10 +214,11 @@ class App extends Component {
       <Router>
       <div className="App">
         <Header />
+          <Route exact path="/" render={() => <Redirect to="/main"/>}/>
           <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
           <Route path="/new-user" render={()=><CreateUser users={this.state.users} getUsers={this.getUsers}/>}/>
           <Route path="/profile" render={()=><Profile currentUser={this.state.currentUser} users={this.state.users} getUsers={this.getUsers} bets={this.state.bets} getBets={this.getBets}/>} />
-          <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users} getBets={this.getBets} currentUser={this.state.currentUser}/>} />
+          <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users} getUsers={this.getUsers} getBets={this.getBets} currentUser={this.state.currentUser}/>} />
           <Route path="/logout" render={()=><Logout />} />
 
       <Footer sc={this.specialCollect} users={this.state.users}/>

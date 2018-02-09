@@ -22,6 +22,7 @@ class BetCardsList extends React.Component {
           users={this.props.users}
           putAcceptance={this.props.putAcceptance}
           getBets={this.props.getBets}
+          getUsers={this.props.getUsers}
           currentUser={this.props.currentUser}/>
         }
       })

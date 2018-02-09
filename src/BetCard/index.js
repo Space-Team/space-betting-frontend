@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Button, Modal } from "antd"
 import "./style.css"
 
-const apiUrl = "http://planet-wager.herokuapp.com/"
+const apiUrl = "https://planet-wager.herokuapp.com/"
 
 let creatorName = ""
 
@@ -51,6 +51,9 @@ class BetCard extends Component {
       .then(data => {
         return data
       })
+      .then(res => {
+      this.props.getUsers()})
+      .then(res => {this.props.getBets()})
       .catch(error => console.error("Error:", error))
   }
 
