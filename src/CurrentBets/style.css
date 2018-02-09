@@ -1,6 +1,5 @@
 .currbets {
-  border: 1px solid #1960d1;
-  background-color: #14007a;
+  background-color: #fffef2;
   display: grid;
   margin: .25rem;
   grid-template-columns: 50% 50%;
@@ -12,7 +11,6 @@
 }
 
 .currbets p {
-  color: white !important;
   text-align: center;
 }
 
@@ -22,24 +20,18 @@
 
 .gridcol1 {
   grid-column: 1;
-  border-bottom: 1px solid white;
-  font-style: italic;
 }
 
 .gridcol1 .strong {
-  font-style: normal;
   font-weight: bold;
   margin-left: 5px;
 }
 
 .gridcol2 {
   grid-column: 2;
-  border-bottom: 1px solid white;
-  font-style: italic;
 }
 
 .gridcol2 .strong {
-  font-style: normal;
   font-weight: bold;
   margin-left: 5px;
 }
@@ -57,6 +49,10 @@
   grid-row: 3/4;
   align-self: end;
   padding: .45rem
+}
+
+.betcardtext.gridcolspan{
+  margin-top: 10px;
 }
 
 .btns {

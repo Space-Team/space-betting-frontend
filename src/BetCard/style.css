@@ -23,20 +23,20 @@
 .maincard {
   display: grid;
   grid-template-columns: 10% 40% 30% 20%;
-  background-color: #14007a;
+  background-color: #fffef2;
   margin: .25rem;
 }
 
 .ant-btn-primary {
   border: 2px solid black !important;
-  background-color: white !important;
-  color: #14007a !important;
+  background-color: #051275 !important;
+  color: #fffef2 !important;
   text-align: center !important;
   padding: 0 !important;
 }
 
 .maincard > p {
-  color: white;
+  color: #14007a;
 }
 
 .cardHeaders {
