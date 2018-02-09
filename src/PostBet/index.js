@@ -25,7 +25,7 @@ class PostBet extends Component {
     this.props.submitBet(e)
     e.target.reset()
     this.setState({amount: 1})
-    this.props.toggler(e)
+    this.props.toggleSuccess(e)
   }
 
   render() {
