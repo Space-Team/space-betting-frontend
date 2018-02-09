@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom"
 import "./App.css"
 import Header from "./Header"
 import Main from "./Main"
@@ -214,6 +214,7 @@ class App extends Component {
       <Router>
       <div className="App">
         <Header />
+          <Route exact path="/" render={() => <Redirect to="/main"/>}/>
           <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
           <Route path="/new-user" render={()=><CreateUser users={this.state.users} getUsers={this.getUsers}/>}/>
           <Route path="/profile" render={()=><Profile currentUser={this.state.currentUser} users={this.state.users} getUsers={this.getUsers} bets={this.state.bets} getBets={this.getBets}/>} />
