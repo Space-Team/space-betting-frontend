@@ -39,15 +39,15 @@ class Header extends React.Component {
   getImg(id){
     switch (id) {
       case "1":
-        return "https://cdn4.iconfinder.com/data/icons/people-of-service/512/People_Services_astronaut_man-256.png"
+        return "./astronaut.png"
       case "2":
-        return "https://cdn4.iconfinder.com/data/icons/people-of-service/512/People_Services_astronaut_woman-256.png"
+        return "./dog.png"
       case "3":
-        return "https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Alien-256.png"
+        return "./alien.png"
       case "4":
-        return "https://cdn0.iconfinder.com/data/icons/everything-icons-vol-1/512/Earth-terra_nova-planet-space-world-globe-space-01-256.png"
+        return "./robot.png"
       default:
-        return "http://www.janetallinger.com/images/icons/big/coin.png"
+        return "./earth.png"
         break
     }
   }
@@ -65,7 +65,7 @@ class Header extends React.Component {
           <Dropdown overlay={loggedInMenu} trigger={['click']}>
             <a className={window.sessionStorage.length ? "ant-dropdown-link" : "ant-dropdown-link hide"} href="#">
               <div className="taller">
-                <img src={this.getImg(window.sessionStorage.avatar)}/>
+                <img className="avatar-thumb" src={this.getImg(window.sessionStorage.avatar)} alt="user's avatar image" />
                 <Icon type="down" />
               </div>
             </a>
@@ -76,7 +76,7 @@ class Header extends React.Component {
           <Dropdown overlay={loggedOutMenu} trigger={['click']}>
               <a className={window.sessionStorage.length ? "ant-dropdown-link hide" : "ant-dropdown-link"}  href="#">
                 <div className="taller">
-                  <img src={this.getImg(window.sessionStorage.avatar)}/>
+                  <img className="avatar-thumb" src={this.getImg(window.sessionStorage.avatar)} alt="user's avatar image" />
                   <Icon type="down" />
                 </div>
               </a>

@@ -1,3 +1,5 @@
-.copy {
+#footer-info {
+  position: fixed;
+  bottom: 0;
   color: #fffef2;
 }

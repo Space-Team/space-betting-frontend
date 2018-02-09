@@ -67,3 +67,9 @@ h1 {
 .taller {
   height: 3rem;
 }
+
+.avatar-thumb {
+  border-radius: 50px;
+  padding: 3px;
+  background-color: lightgrey;
+}
