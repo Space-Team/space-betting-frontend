@@ -4,3 +4,7 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.loginbtn {
+  background-color: #051275 !important;
+}

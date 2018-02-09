@@ -53,3 +53,8 @@ h2 {
 .navbtn {
   background-color: rgb(5,18,117) !important
 }
+
+button.ant-btn.gridcol4.ant-btn-primary {
+  text-align: center;
+  padding: 0;
+}

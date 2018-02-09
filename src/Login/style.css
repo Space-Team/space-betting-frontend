@@ -50,3 +50,7 @@ button {
   padding: .5rem;
   height: 4rem;
 }
+
+.login-form-btn {
+  background-color: #051275 !important;
+}

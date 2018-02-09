@@ -9,3 +9,23 @@
   flex-direction: column;
   align-items: center;
 }
+
+#profile-username-title {
+  margin-top: 15px;
+  background: linear-gradient(to right, hsla(0,0%,1%,0) 0%, #a79fb8 20%, #a79fb8 80%,hsla(0,0%,1%,0) 100%) ;
+  color: #051275;
+}
+
+#profile-username-title #scap {
+  font-size: 1rem;
+  color: #051275;
+  margin: 0;
+  padding-top: 5px;
+  text-decoration: underline;
+}
+
+#profile-username-title #captainUser {
+  text-transform: capitalize;
+  color: #051275;
+  padding-bottom: 5px;
+}

@@ -45,8 +45,12 @@ class Profile extends Component {
     let sbs = this.getSpacebucks()
 
     return (
-      <div >
-        <h2>Space Captain {window.sessionStorage.user}</h2>
+
+        <div>
+        <div id="profile-username-title">
+          <h2 id="scap">Space Captain</h2>
+          <h2 id="captainUser">{window.sessionStorage.user}</h2>
+        </div>
         <div className='spacebucks'>
           <p className='sbucksLabel' >Spacebucks:</p>
           <h2 id='spacebucksdiv'>{sbs} <Icon type="rocket" /></h2>

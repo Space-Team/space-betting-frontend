@@ -71,3 +71,9 @@
 .btns {
   grid-row: 3/4
 }
+
+.currentBetsBtns.gridcolspan {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 10px;
+}

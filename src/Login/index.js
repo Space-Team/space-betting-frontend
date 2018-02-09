@@ -27,12 +27,12 @@ class Login extends React.Component {
           <label htmlFor="login-password">Password: </label>
           <input type="password" id="form-password" name="userPass" />
 
-          <button id="forgot" type="button" onClick={this.forgot}>Forgot Something?</button>
+          <button className="login-form-btn" id="forgot" type="button" onClick={this.forgot}>Forgot Something?</button>
 
-          <button id="login-submitter" type="submit">Login</button>
+          <button className="login-form-btn" id="login-submitter" type="submit">Login</button>
           <p id="wrong-creds" className = "hidden">Username/Password are wrong...</p>
         </form>
-        <button id="create-new-user" onClick={this.redirect}>Create a New Account</button>
+        <button className="login-form-btn" id="create-new-user" onClick={this.redirect}>Create a New Account</button>
       </div>
     )
   }

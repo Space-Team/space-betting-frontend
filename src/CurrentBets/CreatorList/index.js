@@ -24,13 +24,13 @@ class CreatorList extends React.Component {
             <p className="betcardtext gridcolspan">The Bet: <span className="strong">{bet.description}</span></p>
             <p className={bet.resolved ? "betcardtext winner gridcolspan" : "betcardtext winner hidden"}>{this.props.idToName(bet.winner)} won the bet!</p>
             <p className={bet.paid && bet.winner === Number(window.sessionStorage.id) ? "betcardtext" : "betcardtext hidden"}>Spacebucks Deposited!</p>
-            <div className="gridcolspan btns">
+            <div className={bet.accepted ? "gridcolspan btns" : "hidden"}>
               <Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.props.iWon(e, bet)}}>I Won</Button>
               <Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='danger' onClick={(e)=>{this.props.theyWon(e, bet)}}>I Lost</Button>
               <Button className={bet.resolved ? "currentBetsBtns hidden" : "currentBetsBtns"} type='primary' onClick={(e)=>{this.props.washOut(e, bet)}}>Wash</Button>
             </div>
-            <Button className={bet.resolved && !bet.paid && bet.winner === Number(window.sessionStorage.id) ? "currentBetsBtns" : "hidden"} type="primary" onClick={(e)=>{this.props.collect(e, bet, bet.amount * 2)}}>Collect {bet.amount * 2} Spacebucks</Button>
-            <Button className={bet.resolved && !bet.paid && bet.winner === 1 ? "currentBetsBtns" : "hidden"} type="primary" onClick={(e)=>{this.props.collect(e, bet, bet.amount)}}>Collect {bet.amount} Spacebucks</Button>
+            <Button className={bet.resolved && !bet.paid && bet.winner === Number(window.sessionStorage.id) ? "currentBetsBtns gridcolspan" : "hidden"} type="primary" onClick={(e)=>{this.props.collect(e, bet, bet.amount * 2)}}>Collect {bet.amount * 2} Spacebucks</Button>
+            <Button className={bet.resolved && !bet.paid && bet.winner === 1 ? "currentBetsBtns gridcolspan" : "hidden"} type="primary" onClick={(e)=>{this.props.collect(e, bet, bet.amount)}}>Collect {bet.amount} Spacebucks</Button>
             <p className="betcardtext amount">Amount: {bet.amount} <Icon type="rocket" /></p>
           </div>
         )
