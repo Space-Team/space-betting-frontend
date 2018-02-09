@@ -19,9 +19,9 @@ class CreatorList extends React.Component {
       if(bet.creator === Number(window.sessionStorage.id)){
         return(
           <div className="currbets" key={bet.id}>
-            <p className="betcardtext gridcol1">Created by: <span className="strong">{window.sessionStorage.user}</span></p>
-            <p className="betcardtext gridcol2">Accepted by: <span className="strong">{this.props.idToName(bet.acceptor) || "No one has accepted this bet yet"}</span></p>
-            <p className="betcardtext gridcolspan">Description: {bet.description}</p>
+            <p className="betcardtext gridcol1">Creator: <span className="strong">{window.sessionStorage.user}</span></p>
+            <p className="betcardtext gridcol2">Acceptor: <span className="strong">{this.props.idToName(bet.acceptor) || "No one has accepted this bet yet"}</span></p>
+            <p className="betcardtext gridcolspan">The Bet: {bet.description}</p>
             <p className={bet.resolved ? "betcardtext" : "betcardtext hidden"}>{this.props.idToName(bet.winner)} won the bet!</p>
             <p className={bet.paid && bet.winner === Number(window.sessionStorage.id) ? "betcardtext" : "betcardtext hidden"}>Spacebucks Deposited!</p>
             <div className="gridcolspan btns">

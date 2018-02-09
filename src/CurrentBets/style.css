@@ -1,9 +1,10 @@
 .currbets {
   border: 1px solid #1960d1;
-  background-color: #fffef2;
+  background-color: #14007a;
   display: grid;
   margin: .25rem;
-  grid-template-columns: 50% 50%
+  grid-template-columns: 50% 50%;
+  border-radius: 10px;
 }
 
 .currbets:last-child {
@@ -11,6 +12,7 @@
 }
 
 .currbets p {
+  color: white !important;
   text-align: center;
 }
 
@@ -19,11 +21,27 @@
 }
 
 .gridcol1 {
-  grid-column: 1
+  grid-column: 1;
+  border-bottom: 1px solid white;
+  font-style: italic;
+}
+
+.gridcol1 .strong {
+  font-style: normal;
+  font-weight: bold;
+  margin-left: 5px;
 }
 
 .gridcol2 {
-  grid-column: 2
+  grid-column: 2;
+  border-bottom: 1px solid white;
+  font-style: italic;
+}
+
+.gridcol2 .strong {
+  font-style: normal;
+  font-weight: bold;
+  margin-left: 5px;
 }
 
 .gridcolspan {
@@ -38,7 +56,6 @@
   grid-column: 2/3;
   grid-row: 3/4;
   align-self: end;
-  justify-self: end;
   padding: .45rem
 }
 

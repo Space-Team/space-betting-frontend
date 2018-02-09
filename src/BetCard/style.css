@@ -23,8 +23,33 @@
 .maincard {
   display: grid;
   grid-template-columns: 10% 40% 30% 20%;
-  background-color: #fffef2;
+  background-color: #14007a;
   margin: .25rem;
+}
+
+.ant-btn-primary {
+  border: 2px solid black !important;
+  background-color: white !important;
+  color: #14007a !important;
+  text-align: center !important;
+  padding: 0 !important;
+}
+
+.maincard > p {
+  color: white;
+}
+
+.cardHeaders {
+  background-color: transparent !important;
+  border-top: 1px solid white;
+  border-radius: 0;
+  padding-left: 10px
+}
+
+.cardHeaders > p {
+  font-size: 1rem;
+  color: white;
+  font-style: italic !important;
 }
 
 #modalator {
