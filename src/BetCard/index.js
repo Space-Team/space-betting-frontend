@@ -51,6 +51,9 @@ class BetCard extends Component {
       .then(data => {
         return data
       })
+      .then(res => {
+      this.props.getUsers()})
+      .then(res => {this.props.getBets()})
       .catch(error => console.error("Error:", error))
   }
 

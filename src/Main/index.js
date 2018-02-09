@@ -70,7 +70,8 @@ class Main extends Component {
             bets={this.props.bets}
             putAcceptance={this.props.putAcceptance}
             creatorBets={this.props.creatorBets}
-            getBets={this.props.getBets}/>
+            getBets={this.props.getBets}
+            getUsers={this.props.getUsers}/>            
         </div>
     )
   }
