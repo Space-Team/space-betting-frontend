@@ -89,22 +89,22 @@ class CreateUser extends React.Component {
           <div id="avatarChoice">
             <label>
               <input type="radio" id="avatarChoice1" name="avatar" value="1"/>
-              <img src="./astronaut.png" />
+              <img className="avatar-needs" src="./astronaut.png" />
             </label>
 
             <label>
               <input type="radio" id="avatarChoice2" name="avatar" value="2"/>
-              <img src="./dog.png" />
+              <img className="avatar-needs" src="./dog.png" />
             </label>
 
             <label>
               <input type="radio" id="avatarChoice3" name="avatar" value="3"/>
-              <img src="./alien.png" />
+              <img className="avatar-needs" src="./alien.png" />
             </label>
 
             <label>
               <input type="radio" id="avatarChoice4" name="avatar" value="4"/>
-              <img src="./robot.png" />
+              <img className="avatar-needs" src="./robot.png" />
             </label>
           </div>
 
