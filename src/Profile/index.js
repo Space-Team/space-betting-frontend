@@ -20,8 +20,6 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    console.log("profile mounted")
-    console.log('profileprops', this.props)
     if(!this.props.bets) {
       console.error('super sorry')
       return null
@@ -45,7 +43,6 @@ class Profile extends Component {
     this.state.currentBets = currentBets
 
     let sbs = this.getSpacebucks()
-    console.log(sbs)
 
     return (
       <div >

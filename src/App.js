@@ -189,6 +189,7 @@ class App extends Component {
 
   specialCollect(e){
     e.preventDefault()
+    console.log("clicked")
 		var newAmount
 		this.state.users.forEach(user => {
 			if (user.id === Number(window.sessionStorage.id)){

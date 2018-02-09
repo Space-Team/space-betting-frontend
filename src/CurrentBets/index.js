@@ -114,6 +114,8 @@ class CurrBetCard extends Component {
 			body: JSON.stringify(sender)
 		})
 		.then(response => response.json())
+		.then(response => {this.props.getUsers()})
+		.then(response => {this.props.getBets()})
 		.catch(console.error)
 	}
 
