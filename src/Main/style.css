@@ -49,3 +49,7 @@ h2 {
 .colheader {
   color: #051275;
 }
+
+.navbtn {
+  background-color: rgb(5,18,117) !important
+}

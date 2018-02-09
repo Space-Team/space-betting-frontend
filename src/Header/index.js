@@ -53,23 +53,35 @@ class Header extends React.Component {
   }
 
   render(){
+
+    if(window.sessionStorage.length > 0){
+      return(
+        <div id="high">
+
+          <div id="logo-banner">
+            <a href="main"><img height="50px" src="./PlanetWagerLogo.png" alt="Planet Wager Logo" /></a>
+          </div>
+
+
+          <div id="profile-menu">
+            <Dropdown overlay={loggedInMenu} trigger={['click']}>
+              <a className={window.sessionStorage.length ? "ant-dropdown-link" : "ant-dropdown-link hide"} href="#">
+
+                  <img className="avatar-thumb" src={this.getImg(window.sessionStorage.avatar)} alt="user's avatar image" />
+                  <Icon type="down" />
+
+              </a>
+            </Dropdown>
+          </div>
+        </div>
+      )
+    }
+
     return(
       <div id="high">
 
         <div id="logo-banner">
-          <a href="main"><img height="50px" src="./PW-LOGO.png" alt="Planet Wager Logo" /></a>
-        </div>
-
-
-        <div id="profile-menu">
-          <Dropdown overlay={loggedInMenu} trigger={['click']}>
-            <a className={window.sessionStorage.length ? "ant-dropdown-link" : "ant-dropdown-link hide"} href="#">
-              <div className="taller">
-                <img className="avatar-thumb" src={this.getImg(window.sessionStorage.avatar)} alt="user's avatar image" />
-                <Icon type="down" />
-              </div>
-            </a>
-          </Dropdown>
+          <a href="main"><img height="50px" src="./PlanetWagerLogo.png" alt="Planet Wager Logo" /></a>
         </div>
 
         <div id="profile-menu">
