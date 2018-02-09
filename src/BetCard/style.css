@@ -32,7 +32,7 @@
   background-color: #051275 !important;
   color: #fffef2 !important;
   text-align: center !important;
-  padding: 0 !important;
+  padding: 0 .2rem 0 .2rem;
 }
 
 .maincard > p {

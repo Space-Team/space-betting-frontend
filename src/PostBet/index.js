@@ -54,7 +54,7 @@ class PostBet extends Component {
             <TextArea rows={4} name="bet_description" />
           </FormItem>
           <FormItem>
-            <Button className='postBetButton' type="primary" htmlType="submit">
+            <Button className='postBetButton create' htmlType="submit">
               Create Bet
             </Button>
             <Button className='postBetButton' onClick={this.props.toggler}>Cancel</Button>

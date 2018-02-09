@@ -54,3 +54,10 @@ p {
   padding: 1rem;
   height: 4rem
 }
+
+.create {
+  border: 1px solid #fffef2;
+  background-color: #051275;
+  color: white;
+  margin: .25rem .45rem .25rem .45rem;
+}
