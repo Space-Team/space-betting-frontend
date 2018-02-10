@@ -1,8 +1,6 @@
 import React from "react"
 import "./style.css"
 
-const apiUrl = "https://planet-wager.herokuapp.com/"
-
 class Login extends React.Component {
 
   forgot(){

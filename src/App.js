@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import "./App.css"
 import Header from "./Header"
 import Main from "./Main"
@@ -107,10 +107,11 @@ class App extends Component {
   validate(e) {
     e.preventDefault()
     var form = new FormData(e.target)
+    var name = form.get("userName")
 
     setTimeout(() => {
       this.state.users.forEach(user => {
-        if (user.name !== form.get("userName")) {
+        if (user.name !== name) {
           document.querySelector("#wrong-creds").className = ""
           return
         } else if (user.password !== form.get("userPass")) {
@@ -180,8 +181,9 @@ class App extends Component {
   }
 
   getCurrentUser () {
+    // eslint-disable-next-line
     this.state.users.map(user => {
-      if (window.sessionStorage.id == user.id) {
+      if (Number(window.sessionStorage.id) === user.id) {
         this.setState({currentUser: user})
       }
     })

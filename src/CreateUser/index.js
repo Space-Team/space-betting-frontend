@@ -1,5 +1,4 @@
 import React from "react"
-import ReactDOM from "react-dom"
 import "./style.css"
 
 const apiUrl = "https://planet-wager.herokuapp.com/users"
@@ -89,22 +88,22 @@ class CreateUser extends React.Component {
           <div id="avatarChoice">
             <label>
               <input type="radio" id="avatarChoice1" name="avatar" value="1"/>
-              <img className="avatar-needs" src="./astronaut.png" />
+              <img className="avatar-needs" src="./astronaut.png" alt="astronaut avatar" />
             </label>
 
             <label>
               <input type="radio" id="avatarChoice2" name="avatar" value="2"/>
-              <img className="avatar-needs" src="./dog.png" />
+              <img className="avatar-needs" src="./dog.png" alt="dog astronaut avatar"/>
             </label>
 
             <label>
               <input type="radio" id="avatarChoice3" name="avatar" value="3"/>
-              <img className="avatar-needs" src="./alien.png" />
+              <img className="avatar-needs" src="./alien.png" alt="alien avatar"/>
             </label>
 
             <label>
               <input type="radio" id="avatarChoice4" name="avatar" value="4"/>
-              <img className="avatar-needs" src="./robot.png" />
+              <img className="avatar-needs" src="./robot.png" alt="robot avatar"/>
             </label>
           </div>
 

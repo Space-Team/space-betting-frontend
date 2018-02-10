@@ -1,6 +1,5 @@
 import React from "react"
 import "./style.css"
-import Profile from '../Profile'
 import { Menu, Dropdown, Icon } from 'antd';
 
 const loggedInMenu = (
@@ -32,9 +31,6 @@ const loggedOutMenu = (
 
 
 class Header extends React.Component {
-  constructor(props){
-    super(props)
-  }
 
   getImg(id){
     switch (id) {
@@ -48,7 +44,6 @@ class Header extends React.Component {
         return "./robot.png"
       default:
         return "./earth.png"
-        break
     }
   }
 
@@ -65,9 +60,9 @@ class Header extends React.Component {
 
           <div id="profile-menu">
             <Dropdown overlay={loggedInMenu} trigger={['click']}>
-              <a className={window.sessionStorage.length ? "ant-dropdown-link" : "ant-dropdown-link hide"} href="#">
+              <a className={window.sessionStorage.length ? "ant-dropdown-link" : "ant-dropdown-link hide"} >
 
-                  <img className="avatar-thumb" src={this.getImg(window.sessionStorage.avatar)} alt="user's avatar image" />
+                  <img className="avatar-thumb" src={this.getImg(window.sessionStorage.avatar)} alt="Profile Avatar" />
                   <Icon type="down" />
 
               </a>
@@ -86,9 +81,9 @@ class Header extends React.Component {
 
         <div id="profile-menu">
           <Dropdown overlay={loggedOutMenu} trigger={['click']}>
-              <a className={window.sessionStorage.length ? "ant-dropdown-link hide" : "ant-dropdown-link"}  href="#">
+              <a className={window.sessionStorage.length ? "ant-dropdown-link hide" : "ant-dropdown-link"}>
                 <div className="taller">
-                  <img className="avatar-thumb" src={this.getImg(window.sessionStorage.avatar)} alt="user's avatar image" />
+                  <img className="avatar-thumb" src={this.getImg(window.sessionStorage.avatar)} alt="Profile Avatar" />
                   <Icon type="down" />
                 </div>
               </a>

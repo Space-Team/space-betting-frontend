@@ -1,8 +1,6 @@
 import React from "react"
 import { Button, Icon } from "antd"
 
-const apiUrl = "https://planet-wager.herokuapp.com/"
-
 class CreatorList extends React.Component {
   constructor(props){
     super(props)
@@ -15,6 +13,7 @@ class CreatorList extends React.Component {
 
     return this.props.currentBets.sort((a, b) => {
         return (b.date) - (a.date);
+        // eslint-disable-next-line
       }).map(bet => {
       if(bet.creator === Number(window.sessionStorage.id)){
         return(
