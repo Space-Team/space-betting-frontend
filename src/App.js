@@ -19,7 +19,9 @@ class App extends Component {
       users: [],
       creatorBets: [],
       acceptorBets: [],
-      currentUser: {}
+      currentUser: {},
+      description: "",
+      amount: ""
     }
     this.putAcceptance = this.putAcceptance.bind(this)
     this.submitBet = this.submitBet.bind(this)
@@ -122,12 +124,16 @@ class App extends Component {
       .catch(error => console.error("Error:", error))
   }
 
-  submitBet(e) {
+  changeDescription(e){
     e.preventDefault()
-    var form = new FormData(e.target)
+    this.setState({ description: e.target.value })
+  }
+
+  submitBet(e, des, amo) {
+    e.preventDefault()
     var sender = {
-      description: form.get("bet_description"),
-      amount: form.get("bet_amount"),
+      description: des,
+      amount: amo,
       accepted: false,
       resolved: false,
       creator: Number(window.sessionStorage.id),

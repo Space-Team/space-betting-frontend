@@ -8,10 +8,12 @@ class PostBet extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      amount: 1
+      amount: 1,
+      description: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleNumberChange = this.handleNumberChange.bind(this)
+    this.changeDescription = this.changeDescription.bind(this)
   }
 
   handleNumberChange(value) {
@@ -20,9 +22,15 @@ class PostBet extends Component {
     })
   }
 
+  changeDescription(e){
+    this.setState({ description: e.target.value })
+  }
+
   handleSubmit(e){
     e.preventDefault()
-    this.props.submitBet(e)
+    let des = this.state.description
+    let amo = this.state.amount
+    this.props.submitBet(e, des, amo)
     e.target.reset()
     this.setState({amount: 1})
     this.props.toggleSuccess(e)
@@ -51,7 +59,7 @@ class PostBet extends Component {
           </FormItem>
           <p>Describe the bet you would like to make:</p>
           <FormItem>
-            <TextArea rows={4} name="bet_description" />
+            <TextArea onChange={this.changeDescription}rows={4} name="bet_description" value={this.state.description} />
           </FormItem>
           <FormItem>
             <Button className='postBetButton create' htmlType="submit">
