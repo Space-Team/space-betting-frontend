@@ -5,7 +5,9 @@ class Login extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      login: false
+      login: false,
+      username: "",
+      password: ""
     }
     this.login = this.login.bind(this)
     this.changeUsername = this.changeUsername.bind(this)
@@ -30,10 +32,35 @@ class Login extends React.Component {
     this.setState({password: e.target.value})
   }
 
+
   login(e) {
-    alert('A form was submitted: ' + this.state.username)
-    alert('A form was submitted: ' + this.state.password)
     e.preventDefault()
+    setTimeout(() => {
+      this.props.users.forEach(user => {
+        if (user.name !== this.state.username) {
+          return
+        } else if (user.password !== this.state.password) {
+          return
+        }
+        window.sessionStorage.setItem("user", this.state.username)
+        window.sessionStorage.setItem("id", user.id)
+        window.sessionStorage.setItem("spacebucks", user.spacebucks)
+        window.sessionStorage.setItem("avatar", user.image)
+        window.sessionStorage.setItem("firstName", user.firstName)
+        window.sessionStorage.setItem("lastName", user.lastName)
+        window.sessionStorage.setItem("date", user.date)
+        this.setState({ login: true, username: "", password: "" })
+
+      })
+
+      if(this.state.login){
+        document.querySelector("#wrong-creds").className = "hidden"
+        document.querySelector("#great-creds").className = ""
+        window.location.href = "/main"
+        return
+      }
+      document.querySelector("#wrong-creds").className = ""
+    }, 500)
   }
 
   render(){
@@ -52,6 +79,7 @@ class Login extends React.Component {
 
           <button className="login-form-btn" id="login-submitter" type="submit">Login</button>
           <p id="wrong-creds" className = "hidden">Username/Password are wrong...</p>
+          <p id="great-creds" className = "hidden">Looks good cadet.</p>
         </form>
         <button className="login-form-btn" id="create-new-user" onClick={this.redirect}>Create a New Account</button>
       </div>

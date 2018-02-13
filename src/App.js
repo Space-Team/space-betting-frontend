@@ -21,7 +21,6 @@ class App extends Component {
       acceptorBets: [],
       currentUser: {}
     }
-    this.validate = this.validate.bind(this)
     this.putAcceptance = this.putAcceptance.bind(this)
     this.submitBet = this.submitBet.bind(this)
     this.getBets = this.getBets.bind(this)
@@ -102,33 +101,6 @@ class App extends Component {
           }))
       }
     })
-  }
-
-  validate(e) {
-    e.preventDefault()
-    var form = new FormData(e.target)
-    var name = form.get("userName")
-
-    setTimeout(() => {
-      this.state.users.forEach(user => {
-        if (user.name !== name) {
-          document.querySelector("#wrong-creds").className = ""
-          return
-        } else if (user.password !== form.get("userPass")) {
-          document.querySelector("#wrong-creds").className = ""
-          return
-        }
-        this.setState({ userName: form.get("userName") })
-        window.sessionStorage.setItem("user", form.get("userName"))
-        window.sessionStorage.setItem("id", user.id)
-        window.sessionStorage.setItem("spacebucks", user.spacebucks)
-        window.sessionStorage.setItem("avatar", user.image)
-        window.sessionStorage.setItem("firstName", user.firstName)
-        window.sessionStorage.setItem("lastName", user.lastName)
-        window.sessionStorage.setItem("date", user.date)
-        window.location.href = "/main"
-      })
-    }, 500)
   }
 
   putAcceptance(submission, id) {
@@ -217,7 +189,7 @@ class App extends Component {
       <div className="App">
         <Header />
           <Route exact path="/" render={() => <Redirect to="/main"/>}/>
-          <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
+          <Route path="/login" render={()=><Login users={this.state.users}/>} />
           <Route path="/new-user" render={()=><CreateUser users={this.state.users} getUsers={this.getUsers}/>}/>
           <Route path="/profile" render={()=><Profile currentUser={this.state.currentUser} users={this.state.users} getUsers={this.getUsers} bets={this.state.bets} getBets={this.getBets}/>} />
           <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users} getUsers={this.getUsers} getBets={this.getBets} currentUser={this.state.currentUser}/>} />
