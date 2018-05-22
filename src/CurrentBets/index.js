@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./style.css";
-import { Button, Icon } from "antd"
 import CreatorList from "./CreatorList"
 import AcceptorList from "./AcceptorList"
 
@@ -69,11 +68,11 @@ class CurrBetCard extends Component {
 	iWon(e, bet){
 		e.preventDefault()
 
-		var clicker = window.sessionStorage.id
+		var clicker = Number(window.sessionStorage.id)
 
-		if (clicker == bet.creator){
+		if (clicker === bet.creator){
 			this.putAttempt({creatorAttempt: clicker}, bet.id)
-		} else if (clicker == bet.acceptor){
+		} else if (clicker === bet.acceptor){
 			this.putAttempt({acceptorAttempt: clicker}, bet.id)
 		}
 		e.target.parentNode.className = "hidden"
@@ -82,11 +81,11 @@ class CurrBetCard extends Component {
 	theyWon(e, bet){
 		e.preventDefault()
 
-		var clicker = window.sessionStorage.id
+		var clicker = Number(window.sessionStorage.id)
 
-		if (clicker == bet.creator){
+		if (clicker === bet.creator){
 			this.putAttempt({creatorAttempt: bet.acceptor}, bet.id)
-		} else if (clicker == bet.acceptor){
+		} else if (clicker === bet.acceptor){
 			this.putAttempt({acceptorAttempt: bet.creator}, bet.id)
 		}
 		e.target.parentNode.className = "hidden"
@@ -95,11 +94,11 @@ class CurrBetCard extends Component {
 	washOut(e, bet){
 		e.preventDefault()
 
-		var clicker = window.sessionStorage.id
+		var clicker = Number(window.sessionStorage.id)
 
-		if (clicker == bet.creator){
+		if (clicker === bet.creator){
 			this.putAttempt({creatorAttempt: 1}, bet.id)
-		} else if (clicker == bet.acceptor){
+		} else if (clicker === bet.acceptor){
 			this.putAttempt({acceptorAttempt: 1}, bet.id)
 		}
 		e.target.parentNode.className = "hidden"

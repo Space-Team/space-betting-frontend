@@ -1,10 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import BetCard from '../BetCard'
 
 class BetCardsList extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount(){
     this.forceUpdate()
@@ -15,9 +12,11 @@ class BetCardsList extends React.Component {
     if (!this.props.bets) {
       cardRender = <p>No data yet, hold please</p>
     } else if (this.props.bets) {
+      // eslint-disable-next-line
       cardRender = this.props.creatorBets.map(bet => {
         if (bet.accepted === false) {
           return <BetCard key={bet.id}
+          // eslint-disable-next-line
           bet={bet}
           users={this.props.users}
           putAcceptance={this.props.putAcceptance}

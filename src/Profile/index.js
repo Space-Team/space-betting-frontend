@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
-import { Button, Modal } from 'antd'
 import CurrBetCard from '../CurrentBets'
 import "./style.css";
 import { Icon } from 'antd'
-
-
-let creatorName = ''
 
 class Profile extends Component {
 
@@ -39,7 +35,8 @@ class Profile extends Component {
   render() {
 
     let currentBets = this.props.bets.filter(bet => {
-        return window.sessionStorage.id == bet.creator || window.sessionStorage.id == bet.acceptor})
+        return Number(window.sessionStorage.id) === bet.creator || Number(window.sessionStorage.id) === bet.acceptor})
+        // eslint-disable-next-line
     this.state.currentBets = currentBets
 
     let sbs = this.getSpacebucks()

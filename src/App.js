@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import "./App.css"
 import Header from "./Header"
 import Main from "./Main"
@@ -19,9 +19,10 @@ class App extends Component {
       users: [],
       creatorBets: [],
       acceptorBets: [],
-      currentUser: {}
+      currentUser: {},
+      description: "",
+      amount: ""
     }
-    this.validate = this.validate.bind(this)
     this.putAcceptance = this.putAcceptance.bind(this)
     this.submitBet = this.submitBet.bind(this)
     this.getBets = this.getBets.bind(this)
@@ -104,32 +105,6 @@ class App extends Component {
     })
   }
 
-  validate(e) {
-    e.preventDefault()
-    var form = new FormData(e.target)
-
-    setTimeout(() => {
-      this.state.users.forEach(user => {
-        if (user.name !== form.get("userName")) {
-          document.querySelector("#wrong-creds").className = ""
-          return
-        } else if (user.password !== form.get("userPass")) {
-          document.querySelector("#wrong-creds").className = ""
-          return
-        }
-        this.setState({ userName: form.get("userName") })
-        window.sessionStorage.setItem("user", form.get("userName"))
-        window.sessionStorage.setItem("id", user.id)
-        window.sessionStorage.setItem("spacebucks", user.spacebucks)
-        window.sessionStorage.setItem("avatar", user.image)
-        window.sessionStorage.setItem("firstName", user.firstName)
-        window.sessionStorage.setItem("lastName", user.lastName)
-        window.sessionStorage.setItem("date", user.date)
-        window.location.href = "/main"
-      })
-    }, 500)
-  }
-
   putAcceptance(submission, id) {
     var url = apiUrl + "bets/" + id
     fetch(url, {
@@ -149,12 +124,16 @@ class App extends Component {
       .catch(error => console.error("Error:", error))
   }
 
-  submitBet(e) {
+  changeDescription(e){
     e.preventDefault()
-    var form = new FormData(e.target)
+    this.setState({ description: e.target.value })
+  }
+
+  submitBet(e, des, amo) {
+    e.preventDefault()
     var sender = {
-      description: form.get("bet_description"),
-      amount: form.get("bet_amount"),
+      description: des,
+      amount: amo,
       accepted: false,
       resolved: false,
       creator: Number(window.sessionStorage.id),
@@ -180,8 +159,9 @@ class App extends Component {
   }
 
   getCurrentUser () {
+    // eslint-disable-next-line
     this.state.users.map(user => {
-      if (window.sessionStorage.id == user.id) {
+      if (Number(window.sessionStorage.id) === user.id) {
         this.setState({currentUser: user})
       }
     })
@@ -215,7 +195,7 @@ class App extends Component {
       <div className="App">
         <Header />
           <Route exact path="/" render={() => <Redirect to="/main"/>}/>
-          <Route path="/login" render={()=><Login users={this.state.users} validate={this.validate}/>} />
+          <Route path="/login" render={()=><Login users={this.state.users}/>} />
           <Route path="/new-user" render={()=><CreateUser users={this.state.users} getUsers={this.getUsers}/>}/>
           <Route path="/profile" render={()=><Profile currentUser={this.state.currentUser} users={this.state.users} getUsers={this.getUsers} bets={this.state.bets} getBets={this.getBets}/>} />
           <Route path="/main" render={()=><Main submitBet={this.submitBet} putAcceptance={this.putAcceptance} creatorBets={this.state.creatorBets} bets={this.state.bets} users={this.state.users} getUsers={this.getUsers} getBets={this.getBets} currentUser={this.state.currentUser}/>} />

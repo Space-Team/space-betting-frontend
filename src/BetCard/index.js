@@ -4,8 +4,6 @@ import "./style.css"
 
 const apiUrl = "https://planet-wager.herokuapp.com/"
 
-let creatorName = ""
-
 class BetCard extends Component {
   constructor(props) {
     super(props)
@@ -19,7 +17,7 @@ class BetCard extends Component {
   }
 
   componentDidMount() {
-    creatorName = this.props.users.filter(item => {
+    this.props.users.filter(item => {
       return this.props.bet.creator === item.id
     })
     this.forceUpdate()

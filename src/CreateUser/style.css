@@ -12,3 +12,14 @@
   display: none;
   color: red;
 }
+
+.avatar-needs {
+  border-radius: 50px;
+  padding: 3px;
+  background-color: lightgrey;
+  margin: 0 10px;
+}
+
+#login-submitter {
+  background-color: #051275 !important;
+}
